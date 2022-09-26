@@ -13,6 +13,26 @@ public class RegisterUserDTO {
     @NotEmpty(message = "Please select a role for this user.")
     private String role;
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    @NotEmpty
+    private String email;
+    private String picture;
+
     public String getUsername() {
         return username;
     }
