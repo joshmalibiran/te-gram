@@ -17,7 +17,7 @@ public class JdbcCommentDao implements CommentDao{
     }
 
     public boolean create(Comment comment)  {
-        String sql = "insert into comments(post_id, user_id, comment_description) values(?, ?,?)";
+        String sql = "insert into comments(post_id, user_id, comment_description) values(?,?,?)";
         return jdbcTemplate.update(sql, comment.getPost_id(), comment.getUser_id(), comment.getDescription()) == 1;
     }
 
