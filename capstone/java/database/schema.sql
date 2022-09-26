@@ -19,7 +19,7 @@ CREATE TABLE posts	(
 	post_picture varchar(300) NOT NULL,
 	caption varchar(1000) NOT NULL,
 	likes integer NOT NULL,
-	rating integer NOT NULL,
+	date_posted timestamp NOT NULL,
 
 	CONSTRAINT PK_post PRIMARY KEY(post_id),
 	CONSTRAINT FK_posts_users FOREIGN KEY(user_id) REFERENCES users(user_id)
@@ -30,6 +30,7 @@ CREATE TABLE comments	(
 	post_id integer NOT NULL,
 	user_id integer NOT NULL,
 	comment_description varchar(1000) NOT NULL,
+	date_posted timestamp NOT NULL,
 	
 	CONSTRAINT PK_comments PRIMARY KEY(comment_id),
 	CONSTRAINT FK_comments_posts FOREIGN KEY(post_id) REFERENCES posts(post_id),

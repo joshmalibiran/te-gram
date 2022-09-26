@@ -6,8 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.time.LocalDateTime;
+
+
 public class JdbcCommentDaoTests extends BaseDaoTests{
-    protected static final Comment comment1 = new Comment(1, 1, 1, "comment");
+    protected static final Comment comment1 = new Comment(1, 1, 1, "comment", LocalDateTime.now());
 
 
     private JdbcCommentDao sut;

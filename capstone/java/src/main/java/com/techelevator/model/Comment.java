@@ -1,18 +1,30 @@
 package com.techelevator.model;
 
+import java.time.LocalDateTime;
+
 public class Comment {
     private int id;
     private int post_id;
     private int user_id;
     private String description;
+    private LocalDateTime date_posted;
 
     public Comment(){}
 
-    public Comment(int id, int post_id, int user_id, String description) {
+    public Comment(int id, int post_id, int user_id, String description, LocalDateTime date_posted) {
         this.id = id;
         this.post_id = post_id;
         this.user_id = user_id;
         this.description = description;
+        this.date_posted = date_posted;
+    }
+
+    public LocalDateTime getDate_posted() {
+        return date_posted;
+    }
+
+    public void setDate_posted(LocalDateTime date_posted) {
+        this.date_posted = date_posted;
     }
 
     public int getPost_id() {

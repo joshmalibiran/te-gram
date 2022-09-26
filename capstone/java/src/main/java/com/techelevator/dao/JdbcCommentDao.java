@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,19 +18,19 @@ public class JdbcCommentDao implements CommentDao{
     }
 
     public boolean create(Comment comment)  {
-        String sql = "insert into comments(post_id, user_id, comment_description) values(?,?,?)";
-        return jdbcTemplate.update(sql, comment.getPost_id(), comment.getUser_id(), comment.getDescription()) == 1;
+        String sql = "insert into comments(post_id, user_id, comment_description, date_posted) values(?,?,?,?)";
+        return jdbcTemplate.update(sql, comment.getPost_id(), comment.getUser_id(), comment.getDescription(), LocalDateTime.now()) == 1;
     }
 
     public Comment getCommentByCommentId(int id)    {
-        String sql = "select comment_id, post_id, user_id, comment_description from comments where comment_id = ?";
+        String sql = "select comment_id, post_id, user_id, comment_description, date_posted from comments where comment_id = ?";
         Comment comment = jdbcTemplate.queryForObject(sql, Comment.class, id);
         return comment;
     }
 
     public List<Comment> getCommentsByPostId(int id)   {
         List<Comment> list = new ArrayList<>();
-        String sql = "select comment_id, post_id, user_id, comment_description from comments where post_id = ?";
+        String sql = "select comment_id, post_id, user_id, comment_description, date_posted from comments where post_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         while (results.next())  {
             Comment comment = mapRowToComment(results);
@@ -52,6 +53,7 @@ public class JdbcCommentDao implements CommentDao{
         comment.setPost_id(rs.getInt("post_id"));
         comment.setUser_id(rs.getInt("user_id"));
         comment.setDescription(rs.getString("comment_description"));
+        comment.setDate_posted(rs.getObject("date_posted", LocalDateTime.class));
         return comment;
     }
 
