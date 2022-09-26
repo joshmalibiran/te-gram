@@ -16,7 +16,6 @@ public class User {
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
    private String email;
-
    private String picture;
 
    public User() { }
