@@ -8,9 +8,10 @@ import java.util.List;
 public interface PostDao {
 
     boolean create(int postId, int userId, String postPicture, String caption, int likes, LocalDateTime datePosted);
-    //add post date
 
     //like post (increment likes++)
+//    int likePost (int postId);
+
 
     //get post by userId
     List<Post> getPostsByUserId(int userId);

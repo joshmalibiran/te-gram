@@ -32,16 +32,22 @@ public class JdbcPostDao implements PostDao {
         String sql = "SELECT post_id, user_id, post_picture, caption, likes, date_posted FROM posts WHERE user_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-        if (results.next()) {
+        while(results.next()) {
             Post post = mapRowToPost(results);
             posts.add(post);
-
-        } else {
-            System.out.println("Error retrieving posts");
         }
 
         return posts;
     }
+
+//    @Override
+//    public int likePost (int postId) {
+//        String sql = "UPDATE posts SET likes = likes + 1 WHERE post_id = ? RETURNING likes;";
+//
+//        int newLikeTotal = jdbcTemplate.update(sql, postId);
+//
+//        return newLikeTotal;
+//    }
 
     private Post mapRowToPost(SqlRowSet rs) {
         Post post = new Post();
@@ -50,7 +56,7 @@ public class JdbcPostDao implements PostDao {
         post.setPostPicture(rs.getString("post_picture"));
         post.setCaption(rs.getString("caption"));
         post.setLikes(rs.getInt("likes"));
-        post.setDatePosted(rs.getObject("date_posted", LocalDateTime.class));
+        post.setDatePosted(rs.getTimestamp("date_posted").toLocalDateTime());
 
         return post;
     }
