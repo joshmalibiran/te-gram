@@ -35,7 +35,7 @@
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
     </form>
     <carousel id="carousel" class="sample-pictures">
-
+      THIS IS THE CAROUSEL
     </carousel>
   </div>
 </template>
@@ -79,28 +79,14 @@ export default {
 </script>
 <style>
 #login.text-center {
-  width: 50vh;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
 #login.sample-pictures {
-  width: 50vh;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-}
-body{
-background-color: rgb(26, 174, 243);
-}
-#app{
-  height: 100vh;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
-  
-}
-h1{
-  text-align: center;
-  align-items: center;
 }
 .sr-only{
   padding: 3px;

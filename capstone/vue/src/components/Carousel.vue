@@ -1,6 +1,6 @@
 <template>
-  <div>
-      <img src="src\images\cat.png" />
+<div>
+      <img  src="../images/cat.png" />
   </div>
 </template>
 
@@ -11,5 +11,9 @@ export default {
 </script>
 
 <style>
-
+img{
+  display: flex;
+  height: 445px;
+  width: 685px;
+}
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div id="register" class="text-center">
+      <div>
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -39,6 +40,7 @@
         Create Account
       </button>
     </form>
+    </div>
   </div>
 </template>
 
@@ -95,19 +97,28 @@ export default {
 </script>
 
 <style>
-#register.text-center{
-    width: 50vh;
+#app.form-register{
+    flex-basis: 50%;
+}
+#app.div > img{
+    flex-basis: 50%;
+}
+#register{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
 }
+.form-register{
+    flex-direction: column;
+}
+
 form{
     display: flex;
-    flex-direction: column;
     padding: 2px;
 }
 .sr-only{
   padding: 3px;
+}
+#confirmPassword{
+    margin-top: 2px;
 }
 </style>

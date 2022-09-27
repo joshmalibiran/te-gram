@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1></h1>
+  <div id="registerView">
     <register-form/>
     <carousel/>
   </div>
@@ -20,5 +19,8 @@ export default {
 </script>
 
 <style>
-
+#registerView{
+  display: flex;
+  flex-direction: row;
+}
 </style>
