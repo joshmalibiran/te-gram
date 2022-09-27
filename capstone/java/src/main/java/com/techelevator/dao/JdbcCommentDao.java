@@ -23,8 +23,12 @@ public class JdbcCommentDao implements CommentDao{
     }
 
     public Comment getCommentByCommentId(int id)    {
+        Comment comment = null;
         String sql = "select comment_id, post_id, user_id, comment_description, date_posted from comments where comment_id = ?";
-        Comment comment = jdbcTemplate.queryForObject(sql, Comment.class, id);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if(results.next())  {
+            comment = mapRowToComment(results);
+        }
         return comment;
     }
 
