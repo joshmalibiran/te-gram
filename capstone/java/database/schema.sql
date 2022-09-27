@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, posts, comments, favorites;
+DROP TABLE IF EXISTS users, posts, comments, favorites, likes;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -18,7 +18,6 @@ CREATE TABLE posts	(
 	user_id integer NOT NULL,
 	post_picture varchar(300) NOT NULL,
 	caption varchar(1000) NOT NULL,
-	likes integer NOT NULL,
 	date_posted timestamp NOT NULL,
 
 	CONSTRAINT PK_post PRIMARY KEY(post_id),
@@ -44,6 +43,15 @@ CREATE TABLE favorites	(
 	CONSTRAINT PK_favorites PRIMARY KEY(user_id, post_id),
 	CONSTRAINT FK_favorites_users FOREIGN KEY(user_id) REFERENCES users(user_id),
 	CONSTRAINT FK_favorites_posts FOREIGN KEY(post_id) REFERENCES posts(post_id)
+);
+
+CREATE TABLE likes	(
+	user_id integer,
+	post_id integer,
+	
+	CONSTRAINT PK_likes PRIMARY KEY(user_id, post_id),
+	CONSTRAINT FK_likes_users FOREIGN KEY(user_id) REFERENCES users(user_id),
+	CONSTRAINT FK_likes_posts FOREIGN KEY(post_id) REFERENCES posts(post_id)
 );
 
 

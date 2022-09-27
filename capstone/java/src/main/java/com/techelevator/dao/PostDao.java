@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PostDao {
 
-    boolean create(int postId, int userId, String postPicture, String caption, int likes, LocalDateTime datePosted);
+    boolean create( int userId, String postPicture, String caption, int likes, LocalDateTime datePosted);
 
     //like post (increment likes++)
 //    int likePost (int postId);
