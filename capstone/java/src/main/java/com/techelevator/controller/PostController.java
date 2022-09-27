@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 
 @RestController
 @CrossOrigin
@@ -16,8 +19,12 @@ public class PostController {
 
     @PostMapping(path = "/post")
     public boolean createPost(@RequestBody Post post) {
-        //postDao.create(post.getUserId(), post.getPostPicture(), post.getCaption(), post.get )
-        return true;
+        return postDao.create(post.getUserId(), post.getPostPicture(), post.getCaption());
+    }
+
+    @GetMapping(path = "/post")
+    public List<Post> getAllPosts() {
+        return postDao.getRecentPosts();
     }
 
 

@@ -18,12 +18,11 @@ public class JdbcPostDao implements PostDao {
     public JdbcPostDao(JdbcTemplate jdbcTemplate) { this.jdbcTemplate = jdbcTemplate;}
 
     @Override
-    public boolean create(int userId, String postPicture, String caption,
-                          int likes, LocalDateTime datePosted){
+    public boolean create(int userId, String postPicture, String caption){
 
-        String insertPostSql = "INSERT into posts (user_id, post_picture, caption, date_posted) VALUES (?, ?, ?, ?;";
+        String insertPostSql = "INSERT into posts (user_id, post_picture, caption, date_posted) VALUES (?, ?, ?, ?)";
 
-        return jdbcTemplate.update(insertPostSql, userId, postPicture, caption, likes, datePosted) == 1;
+        return jdbcTemplate.update(insertPostSql, userId, postPicture, caption, LocalDateTime.now()) == 1;
     }
 
     @Override
@@ -32,6 +31,20 @@ public class JdbcPostDao implements PostDao {
         String sql = "SELECT post_id, user_id, post_picture, caption, date_posted FROM posts WHERE user_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while(results.next()) {
+            Post post = mapRowToPost(results);
+            posts.add(post);
+        }
+
+        return posts;
+    }
+
+    @Override
+    public List<Post> getRecentPosts() {
+        List<Post> posts = new ArrayList<>();
+        String sql = "SELECT post_id, user_id, post_picture, caption, date_posted FROM posts";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while(results.next()) {
             Post post = mapRowToPost(results);
             posts.add(post);

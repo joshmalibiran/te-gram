@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PostDao {
 
-    boolean create( int userId, String postPicture, String caption, int likes, LocalDateTime datePosted);
+    boolean create( int userId, String postPicture, String caption);
 
     //like post (increment likes++)
 //    int likePost (int postId);
@@ -15,6 +15,7 @@ public interface PostDao {
 
     //get post by userId
     List<Post> getPostsByUserId(int userId);
+    List<Post> getRecentPosts();
 
     //get post by postId
 
