@@ -34,6 +34,9 @@
       <button type="submit">Sign in</button>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
     </form>
+    <carousel id="carousel" class="sample-pictures">
+
+    </carousel>
   </div>
 </template>
 
@@ -75,11 +78,17 @@ export default {
 };
 </script>
 <style>
-#login {
+#login.text-center {
+  width: 50vh;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-
+  justify-content: flex-start;
+}
+#login.sample-pictures {
+  width: 50vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
 body{
 background-color: rgb(26, 174, 243);
@@ -92,11 +101,6 @@ background-color: rgb(26, 174, 243);
 h1{
   text-align: center;
   align-items: center;
-}
-form{
-  display: flex;
-  flex-direction: column;
-  padding: 2px;
 }
 .sr-only{
   padding: 3px;
