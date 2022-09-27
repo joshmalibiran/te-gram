@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 public class JdbcCommentDaoTests extends BaseDaoTests{
@@ -41,5 +42,16 @@ public class JdbcCommentDaoTests extends BaseDaoTests{
         Assert.assertEquals(returned.getId(), 1);
     }
 
+    @Test
+    public void get_comments_by_post_id()   {
+        List<Comment> list = sut.getCommentsByPostId(1);
+        Assert.assertEquals(list.size(), 2);
+    }
+
+    @Test
+    public void delete_deletes_comment()    {
+        sut.delete(1);
+        Assert.assertNull(sut.getCommentByCommentId(1));
+    }
 
 }
