@@ -40,6 +40,8 @@ public class JdbcPostDao implements PostDao {
         return posts;
     }
 
+    //get posts and sort by date
+
 //    @Override
 //    public int likePost (int postId) {
 //        String sql = "UPDATE posts SET likes = likes + 1 WHERE post_id = ? RETURNING likes;";
