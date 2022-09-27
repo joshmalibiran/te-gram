@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.PostDao;
 import com.techelevator.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +18,10 @@ public class PostController {
     @Autowired
     private PostDao postDao;
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/post")
-    public boolean createPost(@RequestBody Post post) {
-        return postDao.create(post.getUserId(), post.getPostPicture(), post.getCaption());
+    public void createPost(@RequestBody Post post) {
+        postDao.create(post.getUserId(), post.getPostPicture(), post.getCaption());
     }
 
     @GetMapping(path = "/post")
@@ -27,5 +29,9 @@ public class PostController {
         return postDao.getRecentPosts();
     }
 
+    @DeleteMapping(path = "/post/{id}")
+    public void deletePost(@PathVariable int id) {
+        postDao.delete(id);
+    }
 
 }

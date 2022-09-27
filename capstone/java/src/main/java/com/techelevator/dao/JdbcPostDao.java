@@ -39,6 +39,24 @@ public class JdbcPostDao implements PostDao {
         return posts;
     }
 
+    public Post getPostByPostId(int id) {
+        Post post = null;
+        String sql = "select post_id, user_id, post_picture, caption, date_posted FROM posts WHERE post_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if(results.next())  {
+            post = mapRowToPost(results);
+        }
+
+        return post;
+    }
+
+    public boolean delete(int id)   {
+        String sql = "delete from posts where post_id = ?";
+        jdbcTemplate.update(sql, id);
+
+        return getPostByPostId(id) == null;
+    }
+
     @Override
     public List<Post> getRecentPosts() {
         List<Post> posts = new ArrayList<>();
@@ -52,6 +70,8 @@ public class JdbcPostDao implements PostDao {
 
         return posts;
     }
+
+
 
 //    @Override
 //    public int likePost (int postId) {

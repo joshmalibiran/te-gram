@@ -16,6 +16,7 @@ public interface PostDao {
     //get post by userId
     List<Post> getPostsByUserId(int userId);
     List<Post> getRecentPosts();
+    boolean delete(int id);
 
     //get post by postId
 
