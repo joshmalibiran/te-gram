@@ -53,7 +53,7 @@ public class JdbcCommentDao implements CommentDao{
         comment.setPost_id(rs.getInt("post_id"));
         comment.setUser_id(rs.getInt("user_id"));
         comment.setDescription(rs.getString("comment_description"));
-        comment.setDate_posted(rs.getObject("date_posted", LocalDateTime.class));
+        comment.setDate_posted(rs.getTimestamp("date_posted").toLocalDateTime());
         return comment;
     }
 
