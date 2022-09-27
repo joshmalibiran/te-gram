@@ -18,18 +18,17 @@ public class JdbcPostDao implements PostDao {
     public JdbcPostDao(JdbcTemplate jdbcTemplate) { this.jdbcTemplate = jdbcTemplate;}
 
     @Override
-    public boolean create(int postId, int userId, String postPicture, String caption,
-                          int likes, LocalDateTime datePosted){
+    public boolean create(int userId, String postPicture, String caption){
 
-        String insertPostSql = "INSERT into posts (post_id, user_id, post_picture, caption, likes, date_posted) VALUES (?, ?, ?, ?, ?, ?);";
+        String insertPostSql = "INSERT into posts (user_id, post_picture, caption, date_posted) VALUES (?, ?, ?, ?)";
 
-        return jdbcTemplate.update(insertPostSql, postId, userId, postPicture, caption, likes, datePosted) == 1;
+        return jdbcTemplate.update(insertPostSql, userId, postPicture, caption, LocalDateTime.now()) == 1;
     }
 
     @Override
     public List<Post> getPostsByUserId(int userId) {
         List<Post> posts = new ArrayList<>();
-        String sql = "SELECT post_id, user_id, post_picture, caption, likes, date_posted FROM posts WHERE user_id = ?;";
+        String sql = "SELECT post_id, user_id, post_picture, caption, date_posted FROM posts WHERE user_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while(results.next()) {
@@ -40,7 +39,43 @@ public class JdbcPostDao implements PostDao {
         return posts;
     }
 
+
     //get posts and sort by date
+
+    public Post getPostByPostId(int id) {
+        Post post = null;
+        String sql = "select post_id, user_id, post_picture, caption, date_posted FROM posts WHERE post_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if(results.next())  {
+            post = mapRowToPost(results);
+        }
+
+        return post;
+    }
+
+    public boolean delete(int id)   {
+        String sql = "delete from posts where post_id = ?";
+        jdbcTemplate.update(sql, id);
+
+        return getPostByPostId(id) == null;
+    }
+
+    @Override
+    public List<Post> getRecentPosts() {
+        List<Post> posts = new ArrayList<>();
+        String sql = "SELECT post_id, user_id, post_picture, caption, date_posted FROM posts";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()) {
+            Post post = mapRowToPost(results);
+            posts.add(post);
+        }
+
+        return posts;
+    }
+
+
+
 
 //    @Override
 //    public int likePost (int postId) {
@@ -57,7 +92,6 @@ public class JdbcPostDao implements PostDao {
         post.setUserId(rs.getInt("user_id"));
         post.setPostPicture(rs.getString("post_picture"));
         post.setCaption(rs.getString("caption"));
-        post.setLikes(rs.getInt("likes"));
         post.setDatePosted(rs.getTimestamp("date_posted").toLocalDateTime());
 
         return post;

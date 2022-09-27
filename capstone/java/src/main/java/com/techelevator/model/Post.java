@@ -11,18 +11,16 @@ public class Post {
     private int userId;
     private String postPicture;
     private String caption;
-    private int likes;
     private LocalDateTime datePosted;
     //add post date
 
     public Post () {};
 
-    public Post(int postId, int userId, String postPicture, String caption, int likes, LocalDateTime datePosted) {
+    public Post(int postId, int userId, String postPicture, String caption, LocalDateTime datePosted) {
         this.postId = postId;
         this.userId = userId;
         this.postPicture = postPicture;
         this.caption = caption;
-        this.likes = likes;
         this.datePosted = datePosted;
 //        this.rating = rating;
         //add post date
@@ -58,14 +56,6 @@ public class Post {
 
     public void setCaption(String caption) {
         this.caption = caption;
-    }
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
     }
 
     public LocalDateTime getDatePosted() {
