@@ -1,19 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">TE Gram</router-link>&nbsp;&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-    </div>
+    </div> -->
     <router-view />
   </div>
 </template>
 <style>
-#app{
+#nav{
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+  width: 50vh;
 }
 body{
 background-color: rgb(26, 174, 243);
+font-family: Georgia, serif;
 }
 </style>

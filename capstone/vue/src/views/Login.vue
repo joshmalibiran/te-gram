@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Welcome to TE Gram!<br>Please Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -34,18 +34,19 @@
       <button type="submit">Sign in</button>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
     </form>
-    <carousel id="carousel" class="sample-pictures">
-      THIS IS THE CAROUSEL
-    </carousel>
+    <carousel/>
   </div>
 </template>
 
 <script>
 import authService from "../services/AuthService";
+import Carousel from "../components/Carousel.vue"
 
 export default {
   name: "login",
-  components: {},
+  components: {
+    Carousel
+  },
   data() {
     return {
       user: {
@@ -78,15 +79,18 @@ export default {
 };
 </script>
 <style>
-#login.text-center {
+#login.text-center{
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+  height: 100vh;
 }
-#login.sample-pictures {
+.form-signin{
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .sr-only{
   padding: 3px;
