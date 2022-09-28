@@ -1,11 +1,14 @@
 <template>
-  <div id="recentPosts" class="posts">
-    <div v-for="(post, key) in this.$store.state.recentPosts" v-bind:key="key">
-      <p>{{ post.caption }}</p>
-
-      <img :src="post.postPicture" />
+    <div id="recentPosts" class="posts">
+        <div v-for="(post,key) in this.$store.state.recentPosts" v-bind:key="key" class= "singlePost">
+            <img :src="post.postPicture" id="picture"/>
+            <div id = "btns">
+            <button id="likeBtn">Like</button>
+            <button id="favoriteBtn">Favorite</button>
+            </div>
+            <p>{{post.caption}}</p>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -41,3 +44,37 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+
+#btns   {
+    width: 600px;
+    display:flex;
+    flex-direction: row;
+    height:auto;
+    justify-content:  space-between;
+}
+
+#picture    {
+    height: auto;
+    width:auto;
+    max-height: 600px;
+    max-width: 600px;
+}
+
+#likeBtn    {
+    background-color:palevioletred;
+}
+
+#favoriteBtn    {
+    background-color:gold;
+}
+
+.singlePost{
+    padding-top: 7.5%;
+    border-radius: 9%;
+    background-color: lightgray;
+    
+    margin-bottom: 3%;
+}
+</style>
