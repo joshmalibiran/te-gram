@@ -1,6 +1,8 @@
 <template>
     <div id="recentPosts" class="posts">
-        <div v-for="post in $store.state.recentPosts" v-bind:key="post.postId">
+        <div v-for="(post,key) in this.$store.state.recentPosts" v-bind:key="key">
+            <p>{{post.caption}}</p>
+            
             <img :src="post.postPicture"/>
         </div>
     </div>
@@ -17,14 +19,16 @@ export default {
     data(){
         return{
             recentPost: [],
+        
             errorMsg: ''
         };
     },
     methods:{
         retrieveRecentPosts(){
             postService.getRecentPost().then(response=>{
-                this.retrieveRecentPosts = response.data;
-                this.$store.commit("SET_RECENT_POSTS", response.data.post)
+                //this.retrieveRecentPosts = response.data;
+                this.recentPost = response.data;
+                this.$store.commit("SET_RECENT_POSTS", response.data)
             })
             .catch(error => {
             if (error.response && error.response.status === 404) {
@@ -34,10 +38,12 @@ export default {
             this.$router.push({ name: 'Login' });
           }
         });
+    }
+
+    
     },
     created(){
-        this.retrieveRecentPosts();
+            this.retrieveRecentPosts();
     }
-}
 }
 </script>
