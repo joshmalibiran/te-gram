@@ -1,6 +1,6 @@
 <template>
 <div>
-    UPLOAD PIC VIEW
+    
     <UploadForm/>
 </div>
 </template>

@@ -1,5 +1,7 @@
 <template>
   <div>
+    <router-link v-bind:to="{ name: 'home' }">TE Gram</router-link>
+    <h1>UPLOAD YOUR PHOTO</h1>
       <form id="upload" @submit.prevent="submitForm">
         <label for="postPicture"> Post Link </label>
         <input
@@ -75,5 +77,8 @@ export default {
 div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 </style>

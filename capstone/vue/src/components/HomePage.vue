@@ -3,15 +3,10 @@
         <sidebar id="panel">
             <router-link v-bind:to="{ name: 'home' }">TE Gram</router-link>&nbsp;&nbsp;
             <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+            <router-link v-bind:to="{name: 'upload'}" v-if="$store.state.token != ''">Upload Photo</router-link>
         </sidebar>
         <div id="post">
-            <!-- <img  src="../images/cat.png"/>
-            <h4>Caption</h4>
-            <p>Comments Here</p>
-
-            <img  src="../images/oceanpic.jpg"/>
-            <h4>Caption</h4>
-            <p>Comments Here</p> -->
+            <feed/>
         </div>
         <div id="userInfo">
             <p>username</p>
@@ -22,6 +17,13 @@
 </template>
 
 <script>
+import feed from "../components/Feed.vue"
+
+export default{
+    components:{
+        feed
+    }
+}
 
 </script>
 
