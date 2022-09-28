@@ -1,6 +1,6 @@
 <template>
-<div>
-      <img  src="../images/cat.png" />
+  <div>
+      <img  src="../images/ezgif.com-gif-maker.gif" />
   </div>
 </template>
 
@@ -13,7 +13,6 @@ export default {
 <style>
 img{
   display: flex;
-  height: 445px;
   width: 685px;
 }
 </style>

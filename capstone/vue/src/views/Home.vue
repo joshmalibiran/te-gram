@@ -1,23 +1,40 @@
 <template>
-  <div id="home" class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+  <div id="home">
+    <homepage/>
   </div>
+  
 </template>
 
 <script>
+import Homepage from "../components/HomePage.vue"
+
 export default {
+  components: {
+    Homepage
+  },
   name: "home"
 };
 </script>
 <style>
-div{
+/* #home{
+  display: flex;
+  flex-direction: row;
+} */
+/* #panel{
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+  align-self: left;
+}
+#post{
+  display: flex;
+  flex-grow: 2;
   justify-content: center;
   align-items: center;
 }
-h1{
- 
-}
+#userInfo{
+  display:flex;
+  flex-grow: 0;
+  align-self: right;
+} */
 </style>

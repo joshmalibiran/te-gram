@@ -97,23 +97,10 @@ export default {
 </script>
 
 <style>
-#app.form-register{
-    flex-basis: 50%;
-}
-#app.div > img{
-    flex-basis: 50%;
-}
-#register{
-    display: flex;
-    flex-direction: row;
-}
 .form-register{
-    flex-direction: column;
-}
-
-form{
     display: flex;
-    padding: 2px;
+    flex-direction: column;
+    padding: 20px;
 }
 .sr-only{
   padding: 3px;

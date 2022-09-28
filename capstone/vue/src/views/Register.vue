@@ -22,5 +22,9 @@ export default {
 #registerView{
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+  height: 100vh;
 }
 </style>
