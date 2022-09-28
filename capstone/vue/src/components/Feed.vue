@@ -16,7 +16,7 @@ export default {
     },
     data(){
         return{
-            recentPosts: [],
+            recentPost: [],
             errorMsg: ''
         };
     },
@@ -24,7 +24,7 @@ export default {
         retrieveRecentPosts(){
             postService.getRecentPost().then(response=>{
                 this.retrieveRecentPosts = response.data;
-                this.$store.commit("SET_RECENT_POSTS", response.data)
+                this.$store.commit("SET_RECENT_POSTS", response.data.post)
             })
             .catch(error => {
             if (error.response && error.response.status === 404) {

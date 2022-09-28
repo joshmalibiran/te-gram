@@ -31,6 +31,7 @@ export default{
 .Homepage{
   display: flex;
   flex-direction: row;
+  width: 100vh;
 }
 #panel{
     display: flex;
@@ -38,6 +39,7 @@ export default{
     flex-grow: 2;
     align-items: flex-start;
     background: rgb(203, 236, 252);
+    height: 100vh;
 }
 #post{
     display: flex;
@@ -50,6 +52,7 @@ export default{
     flex-grow: 2;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     background: rgb(203, 236, 252);
 }
 #userInfo>img{
