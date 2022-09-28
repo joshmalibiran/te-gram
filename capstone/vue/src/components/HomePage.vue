@@ -5,13 +5,13 @@
             <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
         </sidebar>
         <div id="post">
-            <img  src="../images/cat.png"/>
+            <!-- <img  src="../images/cat.png"/>
             <h4>Caption</h4>
             <p>Comments Here</p>
 
             <img  src="../images/oceanpic.jpg"/>
             <h4>Caption</h4>
-            <p>Comments Here</p>
+            <p>Comments Here</p> -->
         </div>
         <div id="userInfo">
             <p>username</p>
@@ -29,7 +29,6 @@
 .Homepage{
   display: flex;
   flex-direction: row;
-
 }
 #panel{
     display: flex;

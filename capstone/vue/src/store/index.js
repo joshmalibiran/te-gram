@@ -18,10 +18,24 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    recentPosts: [],
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    post: {
+      user: '',
+      caption: '',
+      image: '',
+      commentSection: '',
+      datePosted: ''
+    }
   },
   mutations: {
+    SET_RECENT_POSTS(state, data){
+      state.recentPosts = data;
+    },
+    SET_CURRENT_POST(state, data){
+      state.post = data;
+    },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);

@@ -1,16 +1,19 @@
 <template>
   <div id="home">
     <homepage/>
+    <feed/>
   </div>
   
 </template>
 
 <script>
 import Homepage from "../components/HomePage.vue"
+import Feed from "../components/Feed.vue"
 
 export default {
   components: {
-    Homepage
+    Homepage,
+    Feed
   },
   name: "home"
 };
