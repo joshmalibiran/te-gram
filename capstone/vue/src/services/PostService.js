@@ -7,5 +7,9 @@ const http = axios.create({
 export default{
     getRecentPost(){
         return http.get('/post')
+    },
+    addPost(post) {
+        return http.post('/post', post)
     }
 }
+

@@ -1,12 +1,14 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.PostDao;
+import com.techelevator.dao.UserDao;
 import com.techelevator.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,11 +19,15 @@ import java.util.List;
 public class PostController {
     @Autowired
     private PostDao postDao;
+    @Autowired
+    private UserDao userDao;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/post")
-    public void createPost(@RequestBody Post post) {
-        postDao.create(post.getUserId(), post.getPostPicture(), post.getCaption());
+    public void createPost(@RequestBody Post post, Principal principal) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+
+        postDao.create(loggedInUserId, post.getPostPicture(), post.getCaption());
     }
 
     @GetMapping(path = "/post")
