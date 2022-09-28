@@ -24,7 +24,7 @@ public class JdbcPostDao implements PostDao {
 
         return jdbcTemplate.update(insertPostSql, userId, postPicture, caption, LocalDateTime.now()) == 1;
     }
-    
+
     @Override
     public List<Post> getPostsByUserId(int userId) {
         List<Post> posts = new ArrayList<>();
