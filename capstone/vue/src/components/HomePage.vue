@@ -30,8 +30,7 @@ export default{
 <style>
 .Homepage{
   display: flex;
-  flex-direction: row;
-  width: 100vh;
+  flex-direction: row;;
 }
 #panel{
     display: flex;
