@@ -39,11 +39,6 @@ public class JdbcPostDao implements PostDao {
         return posts;
     }
 
-
-
-    //get posts and sort by date
-
-
     public Post getPostByPostId(int id) {
         Post post = null;
         String sql = "select post_id, user_id, post_picture, caption, date_posted FROM posts WHERE post_id = ?";
@@ -76,17 +71,6 @@ public class JdbcPostDao implements PostDao {
         return posts;
     }
 
-
-
-
-//    @Override
-//    public int likePost (int postId) {
-//        String sql = "UPDATE posts SET likes = likes + 1 WHERE post_id = ? RETURNING likes;";
-//
-//        int newLikeTotal = jdbcTemplate.update(sql, postId);
-//
-//        return newLikeTotal;
-//    }
 
     private Post mapRowToPost(SqlRowSet rs) {
         Post post = new Post();

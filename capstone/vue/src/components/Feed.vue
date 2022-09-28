@@ -1,6 +1,8 @@
 <template>
     <div id="recentPosts" class="posts">
-        <div v-for="post in $store.state.recentPosts" v-bind:key="post.postId">
+        <div v-for="(post,key) in this.$store.state.recentPosts" v-bind:key="key">
+            <p>{{post.caption}}</p>
+            
             <img :src="post.postPicture"/>
         </div>
     </div>
@@ -34,10 +36,12 @@ export default {
             this.$router.push({ name: 'Login' });
           }
         });
+    }
+
+    
     },
     created(){
-        this.retrieveRecentPosts();
+            this.retrieveRecentPosts();
     }
-}
 }
 </script>
