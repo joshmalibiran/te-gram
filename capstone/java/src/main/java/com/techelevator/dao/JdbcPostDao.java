@@ -39,6 +39,7 @@ public class JdbcPostDao implements PostDao {
         return posts;
     }
 
+    @Override
     public Post getPostByPostId(int id) {
         Post post = null;
         String sql = "select post_id, user_id, post_picture, caption, date_posted FROM posts WHERE post_id = ?";
@@ -50,6 +51,7 @@ public class JdbcPostDao implements PostDao {
         return post;
     }
 
+    @Override
     public boolean delete(int id)   {
         String sql = "delete from posts where post_id = ?";
         jdbcTemplate.update(sql, id);
