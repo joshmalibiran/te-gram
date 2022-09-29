@@ -1,5 +1,7 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.CommentDao;
+import com.techelevator.dao.LikeDao;
 import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Post;
@@ -22,6 +24,10 @@ public class PostController {
     private PostDao postDao;
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private CommentDao commentDao;
+    @Autowired
+    private LikeDao likeDao;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/post")
@@ -38,9 +44,16 @@ public class PostController {
 
         for (Post currentPost : allPosts) {
 
-            User currentUser = userDao.getUserById(currentPost.getUserId());
+            //add likes to post
+            currentPost.setNumOfLikes(likeDao.getNumberOfLikes(currentPost.getPostId()));
 
-            currentPost.setUsername(currentUser.getUsername());
+            //add comments to post
+            currentPost.setCommentsOnPost(commentDao.getCommentsByPostId(currentPost.getPostId()));
+
+            //store currentPostOwner useraccount
+            User currentPostOwner = userDao.getUserById(currentPost.getUserId());
+
+            currentPost.setUsername(currentPostOwner.getUsername());
         }
 
 
@@ -52,12 +65,19 @@ public class PostController {
         postDao.delete(id);
     }
 
-    @GetMapping(path = "/post/{id}")
-    public Post getPostByPostId(@PathVariable int id) {
+    @GetMapping(path = "/post/{postId}")
+    public Post getPostByPostId(@PathVariable int postId) {
 
-        Post post = postDao.getPostByPostId(id);
+        Post post = postDao.getPostByPostId(postId);
         User postOwner = userDao.getUserById(post.getUserId());
         post.setUsername(postOwner.getUsername());
+
+        //set comments on post
+        post.setCommentsOnPost(commentDao.getCommentsByPostId(postId));
+
+        //set numOfLikes on post
+        post.setNumOfLikes(likeDao.getNumberOfLikes(postId));
+
 
         return post;
     }
@@ -71,6 +91,13 @@ public class PostController {
 
         for (Post currentPost : allPosts) {
 
+            //add likes to post
+            currentPost.setNumOfLikes(likeDao.getNumberOfLikes(currentPost.getPostId()));
+
+            //add comments to post
+            currentPost.setCommentsOnPost(commentDao.getCommentsByPostId(currentPost.getPostId()));
+
+            //store currentPostOwner useraccount
             User currentPostOwner = userDao.getUserById(currentPost.getUserId());
 
             currentPost.setUsername(currentPostOwner.getUsername());
