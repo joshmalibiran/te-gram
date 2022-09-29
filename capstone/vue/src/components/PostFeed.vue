@@ -1,6 +1,6 @@
 <template>
   <div>
-      <SinglePost v-for="post in this.$store.state.recentPosts" v-bind:key="post.postId" v-bind:post="post"/>
+      <SinglePost v-for="post in this.$store.state.recentPosts" v-bind:key="post.postId" v-bind:post="post" />
   </div>
 </template>
 
