@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Post;
+import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -32,7 +33,18 @@ public class PostController {
 
     @GetMapping(path = "/post")
     public List<Post> getAllPosts() {
-        return postDao.getRecentPosts();
+        //loop through and set usernames
+        List<Post> allPosts = postDao.getRecentPosts();
+
+        for (Post currentPost : allPosts) {
+
+            User currentUser = userDao.getUserById(currentPost.getUserId());
+
+            currentPost.setUsername(currentUser.getUsername());
+        }
+
+
+        return allPosts;
     }
 
     @DeleteMapping(path = "/post/{id}")
@@ -42,13 +54,29 @@ public class PostController {
 
     @GetMapping(path = "/post/{id}")
     public Post getPostByPostId(@PathVariable int id) {
-        return postDao.getPostByPostId(id);
+
+        Post post = postDao.getPostByPostId(id);
+        User postOwner = userDao.getUserById(post.getUserId());
+        post.setUsername(postOwner.getUsername());
+
+        return post;
     }
 
     @GetMapping(path = "/like")
     public List<Post> getLikedPosts(Principal principal){
         int loggedInUserId = userDao.findIdByUsername(principal.getName());
-        return postDao.getAllLikedPosts(loggedInUserId);
+
+        // loop through and set usernames
+        List<Post> allPosts = postDao.getAllLikedPosts(loggedInUserId);
+
+        for (Post currentPost : allPosts) {
+
+            User currentPostOwner = userDao.getUserById(currentPost.getUserId());
+
+            currentPost.setUsername(currentPostOwner.getUsername());
+        }
+
+        return allPosts;
     }
 
 }
