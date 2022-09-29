@@ -19,8 +19,8 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     recentPosts: [{
-      postId:1,
-      postPicture: "https://cdn.britannica.com/60/8160-050-08CCEABC/German-shepherd.jpg"
+      postId: '',
+      postPicture: ''
     }],
     token: currentToken || '',
     user: currentUser || {},
