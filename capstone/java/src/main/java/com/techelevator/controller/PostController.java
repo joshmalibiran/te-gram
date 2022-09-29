@@ -40,4 +40,9 @@ public class PostController {
         postDao.delete(id);
     }
 
+    @GetMapping(path = "/post/{id}")
+    public Post getPostByPostId(@PathVariable int id) {
+        return postDao.getPostByPostId(id);
+    }
+
 }
