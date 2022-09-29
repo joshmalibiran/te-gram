@@ -5,9 +5,9 @@
       <form id="upload" @submit.prevent="submitForm">
         <label for="postPicture"> Post Link </label>
         <input
-          type="text"
+          type="file"
           placeholder="paste link to your picture"
-          v-model="post.postPicture"
+          
           />
         <label for="caption"> Caption </label>
         <input
@@ -25,6 +25,9 @@
 
 <script>
 import postService from '../services/PostService'
+// import {storage} from '../firebase/index'
+// import { getStorage, ref } from "firebase/storage";
+
 
 export default {
   data() {
@@ -40,6 +43,9 @@ export default {
     },
     methods: {
       submitForm() {
+
+        
+
         //something
         postService.addPost(this.post).then( response => {
           this.$router.push('/');
