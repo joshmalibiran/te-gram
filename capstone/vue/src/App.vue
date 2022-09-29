@@ -7,6 +7,11 @@
     <router-view />
   </div>
 </template>
+<script setup>
+  //import {storage} from '../src/firebase/index';
+
+</script>
+
 <style>
 #nav{
   display: flex;
