@@ -15,10 +15,14 @@ public interface PostDao {
 
     //get post by userId
     List<Post> getPostsByUserId(int userId);
+
     List<Post> getRecentPosts();
+
+    Post getPostByPostId(int id);
+
     boolean delete(int id);
 
-    //get post by postId
+    List<Post> getAllLikedPosts(int userId);
 
 
 

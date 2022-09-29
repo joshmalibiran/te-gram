@@ -40,4 +40,15 @@ public class PostController {
         postDao.delete(id);
     }
 
+    @GetMapping(path = "/post/{id}")
+    public Post getPostByPostId(@PathVariable int id) {
+        return postDao.getPostByPostId(id);
+    }
+
+    @GetMapping(path = "/like")
+    public List<Post> getLikedPosts(Principal principal){
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+        return postDao.getAllLikedPosts(loggedInUserId);
+    }
+
 }

@@ -39,12 +39,7 @@ public class JdbcPostDao implements PostDao {
         return posts;
     }
 
-<<<<<<< HEAD
-
-    //get posts and sort by date
-
-=======
->>>>>>> main
+    @Override
     public Post getPostByPostId(int id) {
         Post post = null;
         String sql = "select post_id, user_id, post_picture, caption, date_posted FROM posts WHERE post_id = ?";
@@ -56,11 +51,28 @@ public class JdbcPostDao implements PostDao {
         return post;
     }
 
+    @Override
     public boolean delete(int id)   {
         String sql = "delete from posts where post_id = ?";
         jdbcTemplate.update(sql, id);
 
         return getPostByPostId(id) == null;
+    }
+
+    @Override
+    public List<Post> getAllLikedPosts(int userId) {
+        List<Post> posts = new ArrayList<>();
+        String sql = "SELECT likes.user_id, likes.post_id, post_picture, caption, date_posted FROM likes \n" +
+                "Join posts on likes.post_id = posts.post_id\n" +
+                "WHERE likes.user_id = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while(results.next()) {
+            Post post = mapRowToPost(results);
+            posts.add(post);
+        }
+
+        return posts;
     }
 
     @Override
@@ -77,20 +89,6 @@ public class JdbcPostDao implements PostDao {
         return posts;
     }
 
-
-
-<<<<<<< HEAD
-
-=======
->>>>>>> main
-//    @Override
-//    public int likePost (int postId) {
-//        String sql = "UPDATE posts SET likes = likes + 1 WHERE post_id = ? RETURNING likes;";
-//
-//        int newLikeTotal = jdbcTemplate.update(sql, postId);
-//
-//        return newLikeTotal;
-//    }
 
     private Post mapRowToPost(SqlRowSet rs) {
         Post post = new Post();

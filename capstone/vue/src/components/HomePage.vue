@@ -28,29 +28,39 @@ export default{
 </script>
 
 <style>
+
 .Homepage{
   display: flex;
   flex-direction: row;
+  column-gap: 150px;
+  
 }
 #panel{
+    order: 1;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    flex-grow: 2;
+  
     align-items: flex-start;
-    background: rgb(203, 236, 252);
+    background: rgb(255, 255, 255);
 }
 #post{
+    margin-top: 100%;
+    order: 2;
     display: flex;
     flex-direction: column;
-    flex-grow: 4;
+    
     align-items: center;
-}
+    
+} 
 #userInfo{
+    order: 3;
+    justify-content: flex-start;
     display: flex;
-    flex-grow: 2;
+    
     flex-direction: column;
     align-items: center;
-    background: rgb(203, 236, 252);
+    background: rgb(255, 255, 255);
 }
 #userInfo>img{
     justify-content: center;
