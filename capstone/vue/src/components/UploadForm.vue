@@ -5,9 +5,9 @@
       <form id="upload" @submit.prevent="submitForm">
         <label for="postPicture"> Post Link </label>
         <input
-          type="file"
+          type="text"
           placeholder="paste link to your picture"
-          
+          v-model="post.postPicture"
           />
         <label for="caption"> Caption </label>
         <input
