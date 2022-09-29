@@ -8,6 +8,7 @@ import UploadPicture from '../views/UploadPicture.vue'
 import store from '../store/index'
 import PhotoDetail from '../views/PhotoDetail'
 import PostFeed from '../components/PostFeed'
+import Post from '../components/Post'
 
 
 Vue.use(Router)
@@ -77,6 +78,14 @@ const router = new Router({
       path:"/test",
       name:"test",
       component: PostFeed,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path:"/test2/:postId",
+      name:"test2",
+      component: Post,
       meta: {
         requiresAuth: true
       }

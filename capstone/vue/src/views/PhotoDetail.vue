@@ -1,16 +1,16 @@
 <template>
   <div>
-      {{post.postPicture}}
+     <single-post/>
   </div>
 </template>
 
 <script>
+import singlePost from '../components/Post.vue';
+
+
 export default {
-    name: 'details',
-    props: ['singlePost']
-    ,
-    data()  {
-        return
+    components:  {
+        singlePost
     }
 }
 </script>
