@@ -79,7 +79,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 div {
   display: flex;
   flex-direction: column;
