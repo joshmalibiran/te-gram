@@ -4,6 +4,7 @@ import org.springframework.cglib.core.Local;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Post {
 
@@ -12,6 +13,8 @@ public class Post {
     private String username;
     private String postPicture;
     private String caption;
+    private int numOfLikes;
+    private List<Comment> commentsOnPost;
     private LocalDateTime datePosted;
     //add post date
 
@@ -73,6 +76,22 @@ public class Post {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getNumOfLikes() {
+        return numOfLikes;
+    }
+
+    public void setNumOfLikes(int numOfLikes) {
+        this.numOfLikes = numOfLikes;
+    }
+
+    public List<Comment> getCommentsOnPost() {
+        return commentsOnPost;
+    }
+
+    public void setCommentsOnPost(List<Comment> commentsOnPost) {
+        this.commentsOnPost = commentsOnPost;
     }
 }
 

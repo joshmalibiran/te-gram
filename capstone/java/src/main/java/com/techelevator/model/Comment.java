@@ -6,6 +6,7 @@ public class Comment {
     private int id;
     private int post_id;
     private int user_id;
+    private String username;
     private String description;
     private LocalDateTime date_posted;
 
@@ -57,5 +58,13 @@ public class Comment {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
