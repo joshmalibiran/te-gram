@@ -22,7 +22,7 @@ public interface PostDao {
 
     boolean delete(int id);
 
-    //get post by postId
+    List<Post> getAllLikedPosts(int userId);
 
 
 

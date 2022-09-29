@@ -1,11 +1,9 @@
 package com.techelevator.controller;
 
-
-import com.techelevator.dao.LikeDao;
+import com.techelevator.dao.FavoriteDao;
 import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.Like;
-import com.techelevator.model.Post;
+import com.techelevator.model.Favorite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,34 +15,31 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
-public class LikeController {
+public class FavoriteController {
     @Autowired
     private PostDao postDao;
     @Autowired
     private UserDao userDao;
     @Autowired
-    private LikeDao likeDao;
+    private FavoriteDao favoriteDao;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "/like/{id}")
-    public void createLike(@PathVariable int id, @RequestBody Like like, Principal principal){
+    @PostMapping(path = "/favorite/{id}")
+    public void createFavorite(@PathVariable int id, @RequestBody Favorite favorite, Principal principal){
         int loggedInUserId = userDao.findIdByUsername(principal.getName());
 
-        likeDao.create(id, loggedInUserId);
+        favoriteDao.create(id, loggedInUserId);
     }
 
-    @DeleteMapping(path= "/like/{id}")
-    public void deleteLike(@PathVariable int id){
-        likeDao.delete(id);
+    @DeleteMapping(path= "/favorite/{id}")
+    public void deleteFavorite(@PathVariable int id){
+        favoriteDao.delete(id);
     }
 
-    @GetMapping(path="/like/{id}")
-    public int getLikes(@PathVariable int id){
-        return likeDao.getNumberOfLikes(id);
+    @GetMapping(path="/favorite/{id}")
+    public List<Favorite> getFavorites(@PathVariable int id){
+        return favoriteDao.getFavoritesFromUserId(id);
     }
-//    @GetMapping(path="/like")
-//    public List<Post> getAllLikedPost(){
-//        return l
-//    }
+
 
 }

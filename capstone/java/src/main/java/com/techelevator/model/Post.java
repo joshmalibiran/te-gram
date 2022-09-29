@@ -9,6 +9,7 @@ public class Post {
 
     private int postId;
     private int userId;
+    private String username;
     private String postPicture;
     private String caption;
     private LocalDateTime datePosted;
@@ -16,7 +17,7 @@ public class Post {
 
     public Post () {};
 
-    public Post(int postId, int userId, String postPicture, String caption, LocalDateTime datePosted) {
+    public Post(int postId, int userId,String postPicture, String caption, LocalDateTime datePosted) {
         this.postId = postId;
         this.userId = userId;
         this.postPicture = postPicture;
@@ -65,4 +66,14 @@ public class Post {
     public void setDatePosted(LocalDateTime datePosted) {
         this.datePosted = datePosted;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
+
+

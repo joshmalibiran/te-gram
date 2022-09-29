@@ -1,20 +1,19 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Favorite;
 import com.techelevator.model.Like;
 
 import java.util.List;
 
-public interface LikeDao {
-
+public interface FavoriteDao {
     //create
     boolean create(int postId, int userId);
 
-   //delete
+    //delete
     boolean delete(int postId);
 
     //get likes
-    List<Like> getLikesFromUserId(int userId);
+    List<Favorite> getFavoritesFromUserId(int userId);
 
-    //get count of likes
-    int getNumberOfLikes(int postId);
+
 }

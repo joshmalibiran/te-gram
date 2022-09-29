@@ -18,10 +18,7 @@ if(currentToken != null) {
 
 export default new Vuex.Store({
   state: {
-    recentPosts: [{
-      postId: '',
-      postPicture: ''
-    }],
+    recentPosts: [],
     token: currentToken || '',
     user: currentUser || {},
     post: {
