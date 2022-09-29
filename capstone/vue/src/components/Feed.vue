@@ -1,12 +1,14 @@
 <template>
     <div id="recentPosts" class="posts">
-        <div v-for="(post,key) in this.$store.state.recentPosts" v-bind:key="key" class= "singlePost">
-            <img :src="post.postPicture" id="picture"/>
+        <div v-for="(post,key) in this.$store.state.recentPosts" v-bind:key="key" class= "singlePost" >
+            <router-link v-bind:to="{ name: 'picDetails', params: {postId: post.postId} } " v-bind:post="singlePost" >
+            <img :src="post.postPicture" id="picture" />
             <div id = "btns">
             <button id="likeBtn">Like</button>
             <button id="favoriteBtn">Favorite</button>
             </div>
             <p>{{post.caption}}</p>
+            </router-link>
         </div>
     </div>
 </template>
