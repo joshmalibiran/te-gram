@@ -60,6 +60,22 @@ public class JdbcPostDao implements PostDao {
     }
 
     @Override
+    public List<Post> getAllLikedPosts(int userId) {
+        List<Post> posts = new ArrayList<>();
+        String sql = "SELECT posts.user_id, likes.post_id, post_picture, caption, date_posted FROM likes \n" +
+                "Join posts on likes.post_id = posts.post_id\n" +
+                "WHERE likes.user_id = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while(results.next()) {
+            Post post = mapRowToPost(results);
+            posts.add(post);
+        }
+
+        return posts;
+    }
+
+    @Override
     public List<Post> getRecentPosts() {
         List<Post> posts = new ArrayList<>();
         String sql = "SELECT post_id, user_id, post_picture, caption, date_posted FROM posts";
