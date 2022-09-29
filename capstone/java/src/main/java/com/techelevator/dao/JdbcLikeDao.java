@@ -23,10 +23,16 @@ public class JdbcLikeDao implements LikeDao {
     }
 
     @Override
+    public boolean delete(int postId) {
+        String sql = "DELETE from likes where post_id=?";
+        return jdbcTemplate.update(sql, postId) == 1;
+    }
+
+    @Override
     public List<Like> getLikesFromUserId(int userId) {
         List<Like> likesList = new ArrayList<>();
 
-        String sql ="SELECT user_id, post_id FROM likes WHERE user_id = 1;";
+        String sql ="SELECT user_id, post_id FROM likes WHERE user_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
 
@@ -37,6 +43,14 @@ public class JdbcLikeDao implements LikeDao {
 
         return likesList;
     }
+
+    @Override
+    public int getNumberOfLikes(int postId) {
+        String sql = "SELECT COUNT(*) from likes where post_id=?";
+
+        return jdbcTemplate.queryForObject(sql, Integer.class, postId);
+    }
+
 
     private Like mapRowToLike(SqlRowSet rs) {
         Like like = new Like();

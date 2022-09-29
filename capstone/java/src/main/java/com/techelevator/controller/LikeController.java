@@ -5,12 +5,14 @@ import com.techelevator.dao.LikeDao;
 import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Like;
+import com.techelevator.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -31,5 +33,18 @@ public class LikeController {
         likeDao.create(id, loggedInUserId);
     }
 
-    //GET LIKES BY USER ID
+    @DeleteMapping(path= "/like/{id}")
+    public void deleteLike(@PathVariable int id){
+        likeDao.delete(id);
+    }
+
+    @GetMapping(path="/like/{id}")
+    public int getLikes(@PathVariable int id){
+        return likeDao.getNumberOfLikes(id);
+    }
+//    @GetMapping(path="/like")
+//    public List<Post> getAllLikedPost(){
+//        return l
+//    }
+
 }
