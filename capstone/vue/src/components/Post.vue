@@ -1,20 +1,20 @@
 <template>
   <div>
 
-      <router-link :to="{ name: 'details'}">
+      
       <div id = card>
+          <router-link :to="{ name: 'details', params: { postId: post.postId}}">
         <img :src="post.postPicture" id="picture" />
+        </router-link>
         <div id = "btns">
             <button v-on:click="toggleLike($event)" id="like">Like</button>
             <button v-on:click="toggleFavorite($event)">Favorite</button>
         </div>
         <div id = "info"> 
         <p>{{likes}} Likes</p>   
-        <p>{{post.username}}</p>
-        <p>{{post.caption}}</p>
+        <p><b>{{post.username}}</b> {{post.caption}}</p>
         </div>
       </div>
-      </router-link>
 
 
   </div>
@@ -27,8 +27,8 @@ export default {
     name: 'single-post',
     props: ['post'],
     data()  {
-        return{
-            isLiked:'',
+        return{ 
+            isLiked: false,
             isFavorited: false,
             likes: this.post.numOfLikes
 
@@ -100,7 +100,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #info   {
     display: flex;
     flex-direction: column;

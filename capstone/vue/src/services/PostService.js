@@ -6,6 +6,9 @@ export default{
     },
     addPost(post) {
         return axios.post('/post', post)
+    },
+    getPostById(id)   {
+        return axios.get(`/post/${id}`)
     }
 }
 
