@@ -14,7 +14,9 @@ public interface PostDao {
 
 
     //get post by userId
-    List<Post> getPostsByUserId(int userId);
+//    List<Post> getPostsByUserId(int userId);
+
+    List<Post> getPostsByUsername(String username);
 
     List<Post> getRecentPosts();
 

@@ -10,6 +10,7 @@ import PhotoDetail from '../views/PhotoDetail'
 import PostFeed from '../components/PostFeed'
 import Post from '../components/Post'
 import FavoritesView from '../views/FavoritesView'
+import PublicUserProfile from '../views/PublicUserProfile.vue'
 
 
 Vue.use(Router)
@@ -102,6 +103,14 @@ const router = new Router({
     path:"/details",
       name:"details",
       component: PhotoDetail,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/profile/:username",
+      name: "PublicUserProfile",
+      component: PublicUserProfile,
       meta: {
         requiresAuth: true
       }

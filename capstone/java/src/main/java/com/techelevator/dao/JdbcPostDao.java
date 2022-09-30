@@ -25,12 +25,26 @@ public class JdbcPostDao implements PostDao {
         return jdbcTemplate.update(insertPostSql, userId, postPicture, caption, LocalDateTime.now()) == 1;
     }
 
-    @Override
-    public List<Post> getPostsByUserId(int userId) {
-        List<Post> posts = new ArrayList<>();
-        String sql = "SELECT post_id, user_id, post_picture, caption, date_posted FROM posts WHERE user_id = ?;";
+//    @Override
+//    public List<Post> getPostsByUserId(int userId) {
+//        List<Post> posts = new ArrayList<>();
+//        String sql = "SELECT post_id, user_id, post_picture, caption, date_posted FROM posts WHERE user_id = ?;";
+//
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+//        while(results.next()) {
+//            Post post = mapRowToPost(results);
+//            posts.add(post);
+//        }
+//
+//        return posts;
+//    }
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+    @Override
+    public List<Post> getPostsByUsername(String username) {
+        List<Post> posts = new ArrayList<>();
+        String sql = "SELECT username, posts.post_id, posts.user_id, post_picture, caption, date_posted FROM posts JOIN users ON posts.user_id = users.user_id WHERE username = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, username);
         while(results.next()) {
             Post post = mapRowToPost(results);
             posts.add(post);

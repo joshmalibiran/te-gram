@@ -1,16 +1,56 @@
 <template>
   <div>
+      <div v-for="comment in this.$store.state.post.commentsOnPost" v-bind:key="comment.id">
+          <p>{{comment.username}}: {{comment.description}}</p>
+      </div>
 
+      <form v-on:submit.prevent="postComment" >
+      <input type="text" placeholder="Add a comment..." v-model="createdComment.description"/>
+      <button type="submit" value ="Submit" >Post</button>
+      </form>
   </div>
 </template>
 
 <script>
+import postService from '../services/PostService'
+import commentService from '../services/CommentService'
+
 export default {
     name: 'comments',
-    props: ['post'],
+    props:['postId'],
     data()  {
         return  {
-            
+            createdComment: {
+                //ONLY WORKS HARDCODED RIGHT NOW
+                post_id: this.postId,
+                user_id: this.$store.state.user.id,
+                description:''
+            }
+        }
+    },
+    created()   {
+        postService.getPostById(this.$route.params.postId).then(response => {
+            this.$store.commit("SET_COMMENTS", response.data)
+            console.log(this.post)
+        })
+    },
+    methods:    {
+        postComment()   {
+            // this.createdComment.postId = this.$store.state.post.postId
+            // this.createdComment.userId = 2
+            commentService.createComment(this.createdComment).then(response =>   {
+                if(response.status === 201) {
+                   this.$router.go()
+                }
+            })
+            .catch(error => {
+                if(error.response || error.response.status === 404) {
+                    alert(
+                        "Error Commenting"
+                    );
+                }
+            })
+
         }
     }
 }
