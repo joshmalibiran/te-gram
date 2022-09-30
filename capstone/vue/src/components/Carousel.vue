@@ -1,26 +1,25 @@
 <template>
-  <div id="carousel" class="carousel">
-    <!-- <img  src="../images/ezgif.com-gif-maker.gif" /> -->
+  <div>
     <div id="portfolio" class="portfolio">
       <!-- portfolio item 01 -->
 
       <div class="portfolio_item">
         <a href="#portfolio-item-1" class="button">
-          <img src="https://unsplash.it/250?image=1080" alt="" />
+          <img src="../images/strawberries.png" alt="" />
         </a>
       </div>
 
       <!-- portfolio item 02 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-2" class="button">
-          <img src="https://unsplash.it/250?image=1081" alt="" />
+          <img src="../images/architecture.png" alt="" />
         </a>
       </div>
 
       <!-- portfolio item 03 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-3" class="button">
-          <img src="https://unsplash.it/250?image=1060" alt=""
+          <img src="../images/coffee.png" alt=""
         /></a>
       </div>
 
@@ -37,14 +36,14 @@
           <img src="https://unsplash.it/250?image=1035" alt="" />
         </a>
       </div>
-      
+
       <!-- portfolio item 06 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-6" class="button">
           <img src="https://unsplash.it/250?image=965" alt="" />
         </a>
       </div>
-      
+
       <!-- portfolio item 07 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-7" class="button">
@@ -52,7 +51,6 @@
         </a>
       </div>
 
-      
       <!-- portfolio item 08 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-8" class="button">
@@ -60,17 +58,25 @@
         </a>
       </div>
 
+      <!-- portfolio item 09 -->
+      <div class="portfolio_item">
+        <a href="#portfolio-item-9" class="button">
+          <img src="https://unsplash.it/250?image=444" alt="" />
+        </a>
+      </div>
+
       <!-- The portfolio lightboxes -->
       <div class="portfolio-lightboxes">
-
         <!-- lightbox 01 -->
 
         <div id="portfolio-item-1" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="https://unsplash.it/900/300?image=1080" alt="" />
-            <a href="#" class="lb-prev"></a>
-				<a href="#portfolio-item-2" class="lb-next"></a>
+            <img src="../images/lightbox/strawberry-lightbox.png" alt="" />
+            <div class="navBtns">
+              <a href="#" class="lb-prev"></a>
+              <a href="#portfolio-item-2" class="lb-next"></a>
+            </div>
           </div>
         </div>
       </div>
@@ -80,9 +86,11 @@
         <div id="portfolio-item-2" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="https://unsplash.it/900/300?image=1081" alt="" />
-            <a href="#portfolio-item-1" class="lb-prev"></a>
-				<a href="#portfolio-item-3" class="lb-next"></a>
+            <img src="../images/lightbox/architecture-lightbox.png" alt="" />
+            <div class="navBtns">
+              <a href="#portfolio-item-1" class="lb-prev"></a>
+              <a href="#portfolio-item-3" class="lb-next"></a>
+            </div>
           </div>
         </div>
       </div>
@@ -92,9 +100,11 @@
         <div id="portfolio-item-3" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="https://unsplash.it/900/300?image=1060" alt="" />
-            <a href="#portfolio-item-2" class="lb-prev"></a>
-				<a href="#portfolio-item-4" class="lb-next"></a>
+            <img src="../images/lightbox/coffee-lightbox.png" alt="" />
+            <div class="navBtns">
+              <a href="#portfolio-item-2" class="lb-prev"></a>
+              <a href="#portfolio-item-4" class="lb-next"></a>
+            </div>
           </div>
         </div>
       </div>
@@ -105,9 +115,11 @@
         <div id="portfolio-item-4" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="https://unsplash.it/900/300?image=1020" alt="" />
-            <a href="#portfolio-item-3" class="lb-prev"></a>
-				<a href="#portfolio-item-5" class="lb-next"></a>
+            <img src="../images/lightbox/bear-lightbox.png" alt="" />
+            <div class="navBtns">
+              <a href="#portfolio-item-3" class="lb-prev"></a>
+              <a href="#portfolio-item-5" class="lb-next"></a>
+            </div>
           </div>
         </div>
       </div>
@@ -117,9 +129,14 @@
         <div id="portfolio-item-5" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="https://unsplash.it/900/300?image=1035" alt="" />
-            <a href="#portfolio-item-4" class="lb-prev"></a>
-				<a href="#portfolio-item-6" class="lb-next"></a>
+            <img
+              src="../images/lightbox/rainbow-waterfall-lighbox.png"
+              alt=""
+            />
+            <div class="navBtns">
+              <a href="#portfolio-item-4" class="lb-prev"></a>
+              <a href="#portfolio-item-6" class="lb-next"></a>
+            </div>
           </div>
         </div>
       </div>
@@ -129,9 +146,11 @@
         <div id="portfolio-item-6" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="https://unsplash.it/900/300?image=965" alt="" />
-            <a href="#portfolio-item-5" class="lb-prev"></a>
-				<a href="#portfolio-item-7" class="lb-next">t</a>
+            <img src="../images/lightbox/foggy-bridge-lightbox.png" alt="" />
+            <div class="navBtns">
+              <a href="#portfolio-item-5" class="lb-prev"></a>
+              <a href="#portfolio-item-7" class="lb-next"></a>
+            </div>
           </div>
         </div>
       </div>
@@ -141,9 +160,13 @@
         <div id="portfolio-item-7" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="https://unsplash.it/900/300?image=132" alt="" />
-            <a href="#portfolio-item-6" class="lb-prev"></a>
-				<a href="#portfolio-item-8" class="lb-next"></a>
+              <img src="../images/lightbox/side-of-road-lightbox.png" alt="" />
+            <div class="navBtns">
+              <div class="navBtns">
+                <a href="#portfolio-item-6" class="lb-prev"></a>
+                <a href="#portfolio-item-8" class="lb-next"></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -153,13 +176,28 @@
         <div id="portfolio-item-8" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="https://unsplash.it/900/300?image=666" alt="" />
-            <a href="#portfolio-item-7" class="lb-prev"></a>
-				<a href="#portfolio" class="lb-next"></a>
+            <img src="../images/lightbox/forest-lightbox.png" alt="" />
+            <div class="navBtns">
+              <a href="#portfolio-item-7" class="lb-prev"></a>
+              <a href="#portfolio-item-9" class="lb-next"></a>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
+    <!-- lightbox 09 -->
+    <div class="portfolio-lightboxes">
+      <div id="portfolio-item-9" class="portfolio-lightbox">
+        <div class="portfolio-lightbox_content">
+          <a href="#portfolio" class="close"></a>
+          <img src="../images/lightbox/library-lightbox.png" alt="" />
+          <div class="navBtns">
+            <a href="#portfolio-item-8" class="lb-prev"></a>
+            <a href="#portfolio" class="lb-next"></a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -173,9 +211,10 @@ export default {
 <style>
 img {
   max-width: 100%;
+  max-height: 100%;
 }
 .portfolio {
-  height: 500px;
+  height: 400px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1em;
@@ -186,17 +225,18 @@ img {
   background-size: cover;
   overflow-y: scroll;
 }
-.portfolio img{
+.portfolio img {
   width: auto;
   height: auto;
 }
+
 .portfolio-lightbox {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(27, 27, 27, 0.5);
+  background: rgba(31, 31, 31, 0.5);
   color: white;
   display: flex;
   align-items: center;
@@ -206,11 +246,11 @@ img {
   transition: transform ease-in-out 10ms;
 }
 .portfolio-lightbox:target {
-  transform: scale(1, 1);
+  transform: scale(1.5, 1.5);
   transform-origin: center;
 }
 .portfolio-lightbox_content {
-  width: 50%;
+  width: 18%;
   padding: 1em;
   position: relative;
 }
@@ -235,24 +275,31 @@ img {
   color: white;
   font-weight: 700;
 }
-.lb-next{
-  position: flex;
+.navBtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.lb-next,
+.lb-prev {
   text-decoration: none;
 }
-.lb-prev{
-  position: flex;
-  text-decoration: none;
-}
-.lb-next::after{
+.lb-next::after {
   color: white;
   content: ">";
   font-weight: 700;
   font-size: 30px;
 }
-.lb-prev::after{
+.lb-prev::after {
   color: white;
   content: "<";
   font-weight: 700;
   font-size: 30px;
+}
+#btns {
+  width: 255px;
+}
+#info {
+  font-size: 15px;
 }
 </style>

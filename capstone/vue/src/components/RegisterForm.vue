@@ -115,7 +115,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-right: 100px;
+  margin-right: 50px;
 }
 .sr-only {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -135,5 +135,8 @@ export default {
   align-self: center;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   border-radius: 10px;
+}
+.create{
+  color: rgb(7, 125, 194);
 }
 </style>
