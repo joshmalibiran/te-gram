@@ -1,9 +1,10 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">
-        Welcome to TE Gram!<br />Please Sign In
+      <h1 class="welcome-message">
+        Welcome to TE Gram!
       </h1>
+      <h2>Please Sign In!</h2>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -36,7 +37,7 @@
         />
         <button id="submit" type="submit">Sign in</button>
       </div>
-        <router-link :to="{ name: 'register' }">Need an account?</router-link>
+        <router-link id="register-link" :to="{ name: 'register' }">Don't have an account?</router-link>
     </form>
     <carousel id="carousel" />
   </div>
@@ -84,6 +85,7 @@ export default {
 </script>
 <style>
 #login.text-center {
+  margin-left: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -94,10 +96,10 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-right: 100px;
 }
 .sr-only {
   padding: 3px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 a {
   padding: 10px;
@@ -113,15 +115,37 @@ button {
 }
 .form-control {
   width: 151px;
+  height: 25px;
+  border: none;
+  border-radius: 10px;
 }
 #submit {
-  width: 157px;
+  width: 155px;
+  border-radius: 10px;
+  margin-left: 3px;
+  border: 1px solid black;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 #login-box{
   display: flex;
   flex-direction: column;
-  align-self: center;
   width: 165px;
-  margin-left: 90px;
+  margin-left: 75px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+h2{
+  text-align: center;
+  color: rgb(7, 125, 194);
+  font-size: 30px;
+  /* -webkit-text-stroke: .05px white; */
+}
+.welcome-message{
+  text-align: center;
+  color: rgb(7, 125, 194);
+}
+#register-link{
+  font-size: 15px;
+  margin-right: 15px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 </style>

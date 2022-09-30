@@ -2,7 +2,7 @@
   <div id="register" class="text-center">
     <div>
       <form class="form-register" @submit.prevent="register">
-        <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+        <h1 class="create">Create a free account!</h1>
         <div class="alert alert-danger" role="alert" v-if="registrationErrors">
           {{ registrationErrorMsg }}
         </div>
@@ -43,7 +43,7 @@
           required
         />
         <router-link :to="{ name: 'login' }">Have an account?</router-link>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">
+        <button id="create-btn" class="btn btn-lg btn-primary btn-block" type="submit">
           Create Account
         </button>
       </form>
@@ -104,15 +104,36 @@ export default {
 </script>
 
 <style>
+#register.text-center{
+    display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 .form-register {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  justify-content: flex-start;
+  margin-right: 100px;
 }
 .sr-only {
-  padding: 3px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  width: 155px;
+  align-self: center;
 }
+
 #confirmPassword {
-  margin-top: 2px;
+  margin-top: 5px;
+}
+.form-control{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  align-self: center;
+}
+#create-btn{
+  width: 165px;
+  align-self: center;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border-radius: 10px;
 }
 </style>
