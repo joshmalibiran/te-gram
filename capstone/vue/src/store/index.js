@@ -19,6 +19,7 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     recentPosts: [],
+    favoritePosts: [],
     token: currentToken || '',
     user: currentUser || {},
     post: {
@@ -35,6 +36,9 @@ export default new Vuex.Store({
     },
     SET_CURRENT_POST(state, data){
       state.post = data;
+    },
+    SET_FAVORITE_POST(state, data){
+      state.favoritePosts = data;
     },
     SET_AUTH_TOKEN(state, token) {
       state.token = token;

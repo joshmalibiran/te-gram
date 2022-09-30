@@ -9,6 +9,7 @@ import store from '../store/index'
 import PhotoDetail from '../views/PhotoDetail'
 import PostFeed from '../components/PostFeed'
 import Post from '../components/Post'
+import FavoritesView from '../views/FavoritesView'
 
 
 Vue.use(Router)
@@ -87,6 +88,14 @@ const router = new Router({
       name:"test2",
       component: Post,
       meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path:"/favorite",
+      name: "favorite",
+      component: FavoritesView,
+      meta:{
         requiresAuth: true
       }
     }
