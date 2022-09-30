@@ -9,6 +9,11 @@ export default{
     },
     getUserPostsFromUsername(username) {
         return axios.get(`/profile/${username}`)
+   
+    }, 
+
+    getPostById(id){
+        return axios.get(`/post/${id}`)
     }
 }
 

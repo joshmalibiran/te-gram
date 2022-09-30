@@ -19,6 +19,7 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     recentPosts: [],
+    commentsOnPost:[],
     favoritePosts: [],
     currentProfilePosts: [],
 
@@ -29,10 +30,14 @@ export default new Vuex.Store({
       caption: '',
       image: '',
       commentSection: '',
-      datePosted: ''
+      datePosted: '',
+      postId:''
     }
   },
   mutations: {
+    SET_COMMENTS(state, data){
+      state.commentsOnPost = data;
+    },
     SET_RECENT_POSTS(state, data){
       state.recentPosts = data;
     },
