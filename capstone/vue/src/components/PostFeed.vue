@@ -1,6 +1,6 @@
 <template>
   <div>
-      <div v-for="post in this.$store.state.recentPosts" v-bind:key="post.postId">
+      <div v-for="post in this.$store.state.recentPosts" v-bind:key="post.postId" class = card>
       <SinglePost v-bind:post="post"/>
       </div>
   </div>
@@ -44,6 +44,9 @@ export default {
 </script>
 
 <style>
-
+#card {
+  padding-bottom: 5%;
+  margin-bottom: 5%;
+}
 
 </style>

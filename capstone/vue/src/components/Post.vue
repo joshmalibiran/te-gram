@@ -8,7 +8,11 @@
             <button v-on:click="toggleLike($event)">Like</button>
             <button v-on:click="toggleFavorite($event)">Favorite</button>
         </div>
+        <div id = "info"> 
+        <p>{{likes}} Likes</p>   
+        <p>{{post.username}}</p>
         <p>{{post.caption}}</p>
+        </div>
       </div>
     
 
@@ -16,13 +20,17 @@
 </template>
 
 <script>
+import likeService from '../services/LikeService'
+
 export default {
     name: 'single-post',
     props: ['post'],
     data()  {
         return{
-            isLiked: false,
-            isFavorited: false
+            isLiked:false,
+            isFavorited: false,
+            likes: this.post.numOfLikes
+
         }
     },
 
@@ -30,12 +38,34 @@ export default {
         toggleLike(event)    {
             //CODE TO CHANGE SERVE / STATE
             if(this.isLiked)    {
-                event.target.classList.remove('likeBtn')
+                likeService.unLikePost(this.post.postId).then(response =>   {
+                    if(response.status === 201) {
+                        this.likes = this.likes - 1
+                        event.target.classList.remove('likeBtn')
+                        this.isLiked =!this.isLiked
+                    }
+                })
+                //catch?
+            
             }
             else    {
-                event.target.classList.add('likeBtn')
+                likeService.likePost(this.post.postId).then(response => {
+                    if(response.status === 201) {
+                        this.likes = this.likes + 1
+                        event.target.classList.add('likeBtn')
+                        this.isLiked =!this.isLiked
+                    }
+                })
+                .catch(error => {
+                if(error.response || error.response.status === 404) {
+                    alert(
+                        "Error Liking Post"
+                    );
+                }
+                })
+            
             }
-            this.isLiked =!this.isLiked
+    
            
         },
         toggleFavorite(event)   {
@@ -48,11 +78,27 @@ export default {
             }
             this.isFavorited = !this.isFavorited
         }
+    },
+
+    mounted()   {
+        //set isLiked to true or false depending on if is liked on database
+        console.log("test")
+        likeService.getIsLiked(this.post.postId).then(response =>   {
+            console.log(response.data)
+            this.isLiked = response.data
+        })
+        //add catch?
     }
 }
 </script>
 
 <style scoped>
+#info   {
+    display: flex;
+    flex-direction: column;
+    
+}
+
 #btns   {
     width: 600px;
     display:flex;
@@ -65,7 +111,8 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 10px solid black;
+    border: 5px solid black;
+    background-color: rgba(96, 193, 238, 0.867);
 }
 
 #picture    {

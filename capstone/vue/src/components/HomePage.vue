@@ -3,7 +3,7 @@
     <sidebar id="navPanel">
       <img id="logo" src="../images/TE-GRAM.jpg" />
       <!-- <router-link v-bind:to="{ name: 'home' }">TE Gram</router-link>&nbsp;&nbsp; -->
-      <p>username</p>
+      <p>{{this.$store.state.user.username}}</p>
       <img id="profilePicture" src="../images/default.jpg" />
       <router-link
         class="panel"
@@ -18,6 +18,7 @@
         >Logout</router-link
       >
     </sidebar>
+
     <div id="post">
       <post-feed />
     </div>
@@ -37,9 +38,10 @@ export default {
 
 <style>
 .Homepage {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  column-gap: 150px;
+  
+  column-gap: 150px; */
 }
 #navPanel > #logo {
   height: auto;
@@ -65,7 +67,6 @@ export default {
   margin-top: 10px;
 }
 #post {
-  margin-top: 100%;
   order: 2;
   display: flex;
   flex-direction: column;
