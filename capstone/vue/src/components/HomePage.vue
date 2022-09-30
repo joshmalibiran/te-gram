@@ -56,7 +56,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgb(255, 255, 255);
+  background: rgb(207, 234, 255);
   position: fixed;
   top: 0;
   left: 0;
