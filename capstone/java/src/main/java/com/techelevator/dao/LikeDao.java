@@ -17,4 +17,6 @@ public interface LikeDao {
 
     //get count of likes
     int getNumberOfLikes(int postId);
+
+    boolean isPostLikedByUserId(int postId, int userId);
 }

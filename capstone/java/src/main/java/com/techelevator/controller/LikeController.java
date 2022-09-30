@@ -27,7 +27,7 @@ public class LikeController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/like/{id}")
-    public void createLike(@PathVariable int id, @RequestBody Like like, Principal principal){
+    public void createLike(@PathVariable int id, Principal principal){
         int loggedInUserId = userDao.findIdByUsername(principal.getName());
 
         likeDao.create(id, loggedInUserId);
@@ -38,10 +38,19 @@ public class LikeController {
         likeDao.delete(id);
     }
 
+
     @GetMapping(path="/like/{id}")
     public int getLikes(@PathVariable int id){
         return likeDao.getNumberOfLikes(id);
     }
+
+    @GetMapping(path ="/isLiked/{id}")
+    public boolean isLiked(@PathVariable int id, Principal principal){
+        int userId = userDao.findIdByUsername(principal.getName());
+
+        return likeDao.isPostLikedByUserId(id,userId);
+    }
+
 //    @GetMapping(path="/like")
 //    public List<Post> getAllLikedPost(){
 //        return l

@@ -1,57 +1,53 @@
 <template>
     <div id="recentPosts" class="posts">
-        <div v-for="(post,key) in this.$store.state.recentPosts" v-bind:key="key" class= "singlePost">
-            <img :src="post.postPicture" id="picture"/>
+        <div v-for="(post,key) in this.$store.state.recentPosts" v-bind:key="key" class= "singlePost" >
+            <router-link v-bind:to="{ name: 'picDetails', params: {postId: post.postId} } " v-bind:post="singlePost" >
+            <img :src="post.postPicture" id="picture" />
             <div id = "btns">
             <button id="likeBtn">Like</button>
             <button id="favoriteBtn">Favorite</button>
             </div>
             <p>{{post.caption}}</p>
+            </router-link>
         </div>
     </div>
 </template>
 
 <script>
-import postService from '../services/PostService';
+import postService from "../services/PostService";
 
 export default {
-    name: "feed",
-    components:{
-
-    },
-    data(){
-        return{
-            recentPost: [],
-        
-            errorMsg: ''
-        };
-    },
-    methods:{
-        retrieveRecentPosts(){
-            postService.getRecentPost().then(response=>{
-                //this.retrieveRecentPosts = response.data;
-                this.recentPost = response.data;
-                this.$store.commit("SET_RECENT_POSTS", response.data)
-            })
-            .catch(error => {
-            if (error.response && error.response.status === 404) {
-            alert(
-              "Feed not available."
-            );
-            this.$router.push({ name: 'Login' });
+  name: "feed",
+  components: {},
+  data() {
+    return {
+      recentPost: [],
+      errorMsg: "",
+    };
+  },
+  methods: {
+    retrieveRecentPosts() {
+      postService
+        .getRecentPost()
+        .then((response) => {
+          this.retrieveRecentPosts = response.data;
+          this.$store.commit("SET_RECENT_POSTS", response.data);
+        })
+        .catch((error) => {
+          if (error.response && error.response.status === 404) {
+            alert("Feed not available.");
+            this.$router.push({ name: "Login" });
           }
         });
-    }
-
-    
     },
-    created(){
-            this.retrieveRecentPosts();
-    }
-}
+  },
+  created() {
+    this.retrieveRecentPosts();
+  },
+};
 </script>
 
-<style scoped>
+<style>
 
 #btns   {
     width: 600px;

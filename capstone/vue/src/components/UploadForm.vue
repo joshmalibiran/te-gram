@@ -25,6 +25,9 @@
 
 <script>
 import postService from '../services/PostService'
+// import {storage} from '../firebase/index'
+// import { getStorage, ref } from "firebase/storage";
+
 
 export default {
   data() {
@@ -40,6 +43,9 @@ export default {
     },
     methods: {
       submitForm() {
+
+        
+
         //something
         postService.addPost(this.post).then( response => {
           this.$router.push('/');
@@ -73,7 +79,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 div {
   display: flex;
   flex-direction: column;

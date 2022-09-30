@@ -7,13 +7,12 @@
     <router-view />
   </div>
 </template>
+<script setup>
+  //import {storage} from '../src/firebase/index';
+
+</script>
+
 <style>
-#nav{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 50vh;
-}
 body{
 background-color: rgb(167, 222, 253);
 font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

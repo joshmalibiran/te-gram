@@ -34,7 +34,7 @@
       <button type="submit">Sign in</button>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
     </form>
-    <carousel/>
+    <carousel id="carousel"/>
   </div>
 </template>
 
@@ -45,7 +45,7 @@ import Carousel from "../components/Carousel.vue"
 export default {
   name: "login",
   components: {
-    Carousel
+    Carousel,
   },
   data() {
     return {
@@ -84,24 +84,29 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  column-gap: 50px;
   height: 100vh;
 }
 .form-signin{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-right: 100px;
 }
 .sr-only{
   padding: 3px;
+
 }
 a{
-  padding: 3px;
+  padding: 10px;
   text-align: center;
 }
 button{
   margin: 1px;
   margin-top: 8px;
+}
+#carousel{
+  display: flex;
+  margin-left: 100px;
 }
 
 </style>

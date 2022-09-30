@@ -6,6 +6,10 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import UploadPicture from '../views/UploadPicture.vue'
 import store from '../store/index'
+import PhotoDetail from '../views/PhotoDetail'
+import PostFeed from '../components/PostFeed'
+import Post from '../components/Post'
+
 
 Vue.use(Router)
 
@@ -58,10 +62,36 @@ const router = new Router({
       path: "/upload",
       name: "upload",
       component: UploadPicture,
-      met: {
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path:"/picture/:postId",
+      name:"picDetails",
+      component: PhotoDetail,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path:"/test",
+      name:"test",
+      component: PostFeed,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path:"/test2/:postId",
+      name:"test2",
+      component: Post,
+      meta: {
         requiresAuth: true
       }
     }
+
+
   ]
 })
 

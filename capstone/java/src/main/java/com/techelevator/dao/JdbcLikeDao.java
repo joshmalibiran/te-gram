@@ -51,6 +51,14 @@ public class JdbcLikeDao implements LikeDao {
         return jdbcTemplate.queryForObject(sql, Integer.class, postId);
     }
 
+    @Override
+    public boolean isPostLikedByUserId(int postId, int userId)  {
+        String sql = "select COUNT(*) from likes where user_id = ? and post_id = ?";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class, userId, postId);
+        return count == 1;
+
+    }
+
 
     private Like mapRowToLike(SqlRowSet rs) {
         Like like = new Like();
