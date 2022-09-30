@@ -8,7 +8,7 @@ export default{
         return axios.delete(`/favorite/${id}`)
     },
     getIsFavorite(id)  {
-        return axios.get(`/isFavorite/${id}`)
+        return axios.get(`/favorite/${id}`)
     }
 
 }

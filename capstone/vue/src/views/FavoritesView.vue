@@ -1,7 +1,7 @@
 <template>
     <div id="favorites">
-        <favorites-feed/>
         <h1>This is our favorites Page!</h1>
+        <favorites-feed/>
     </div>
 </template>
 

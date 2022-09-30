@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -80,6 +81,52 @@ public class PostController {
 
 
         return post;
+    }
+
+//    @GetMapping(path = "profile/{userId}")
+//    public List<Post> getPostsByUserId(@PathVariable int userId) {
+//        List<Post> allUserPosts = new ArrayList<>();
+//        allUserPosts = postDao.getPostsByUserId(userId);
+//
+//        for (Post currentPost : allUserPosts) {
+//
+//            //add likes to post
+//            currentPost.setNumOfLikes(likeDao.getNumberOfLikes(currentPost.getPostId()));
+//
+//            //add comments to post
+//            currentPost.setCommentsOnPost(commentDao.getCommentsByPostId(currentPost.getPostId()));
+//
+//            //store currentPostOwner useraccount
+//            User currentPostOwner = userDao.getUserById(currentPost.getUserId());
+//
+//            currentPost.setUsername(currentPostOwner.getUsername());
+//        }
+//
+//
+//        return allUserPosts;
+//    }
+
+    @GetMapping(path = "profile/{username}")
+    public List<Post> getPostsByUserId(@PathVariable String username) {
+        List<Post> allUserPosts = new ArrayList<>();
+        allUserPosts = postDao.getPostsByUsername(username);
+
+        for (Post currentPost : allUserPosts) {
+
+            //add likes to post
+            currentPost.setNumOfLikes(likeDao.getNumberOfLikes(currentPost.getPostId()));
+
+            //add comments to post
+            currentPost.setCommentsOnPost(commentDao.getCommentsByPostId(currentPost.getPostId()));
+
+            //store currentPostOwner useraccount
+            User currentPostOwner = userDao.getUserById(currentPost.getUserId());
+
+            currentPost.setUsername(username);
+        }
+
+
+        return allUserPosts;
     }
 
     @GetMapping(path = "/like")

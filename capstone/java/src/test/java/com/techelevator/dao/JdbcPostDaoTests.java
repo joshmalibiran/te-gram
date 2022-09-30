@@ -32,19 +32,19 @@ public class JdbcPostDaoTests extends BaseDaoTests{
 
     }
 
-    @Test
-    public void get_posts_by_user_id_returns_posts() {
-//        boolean createNewPost = sut.create(2,3, "link", "caption", 5, LocalDateTime.now());
-//        boolean createSecondPost = sut.create(3,3, "link", "caption", 5, LocalDateTime.now());
-        int expectedListLength = 1;
-
-        List<Post> postlist = sut.getPostsByUserId(1);
-
-        Assert.assertEquals(expectedListLength, postlist.size());
-
-
-
-
-
-    }
+//    @Test
+//    public void get_posts_by_user_id_returns_posts() {
+////        boolean createNewPost = sut.create(2,3, "link", "caption", 5, LocalDateTime.now());
+////        boolean createSecondPost = sut.create(3,3, "link", "caption", 5, LocalDateTime.now());
+//        int expectedListLength = 1;
+//
+//        List<Post> postlist = sut.getPostsByUserId(1);
+//
+//        Assert.assertEquals(expectedListLength, postlist.size());
+//
+//
+//
+//
+//
+//    }
 }
