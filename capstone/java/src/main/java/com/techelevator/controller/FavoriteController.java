@@ -24,21 +24,21 @@ public class FavoriteController {
     private FavoriteDao favoriteDao;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(path = "/favorite/{id}")
-    public void createFavorite(@PathVariable int id, @RequestBody Favorite favorite, Principal principal){
+    @PostMapping(path = "/favorite/{postId}")
+    public void createFavorite(@PathVariable int postId, @RequestBody Favorite favorite, Principal principal){
         int loggedInUserId = userDao.findIdByUsername(principal.getName());
 
-        favoriteDao.create(id, loggedInUserId);
+        favoriteDao.create(postId, loggedInUserId);
     }
 
-    @DeleteMapping(path= "/favorite/{id}")
-    public void deleteFavorite(@PathVariable int id){
-        favoriteDao.delete(id);
+    @DeleteMapping(path= "/favorite/{postId}")
+    public void deleteFavorite(@PathVariable int postId){
+        favoriteDao.delete(postId);
     }
 
-    @GetMapping(path="/favorite/{id}")
-    public List<Favorite> getFavorites(@PathVariable int id){
-        return favoriteDao.getFavoritesFromUserId(id);
+    @GetMapping(path="/favorite/{userId}")
+    public List<Favorite> getFavorites(@PathVariable int userId){
+        return favoriteDao.getFavoritesFromUserId(userId);
     }
 
 
