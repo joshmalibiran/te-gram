@@ -1,11 +1,11 @@
 <template>
   <div>
 
-      
+      <router-link :to="{ name: 'details'}">
       <div id = card>
         <img :src="post.postPicture" id="picture" />
         <div id = "btns">
-            <button v-on:click="toggleLike($event)">Like</button>
+            <button v-on:click="toggleLike($event)" id="like">Like</button>
             <button v-on:click="toggleFavorite($event)">Favorite</button>
         </div>
         <div id = "info"> 
@@ -14,7 +14,8 @@
         <p>{{post.caption}}</p>
         </div>
       </div>
-    
+      </router-link>
+
 
   </div>
 </template>
@@ -27,7 +28,7 @@ export default {
     props: ['post'],
     data()  {
         return{
-            isLiked:false,
+            isLiked:'',
             isFavorited: false,
             likes: this.post.numOfLikes
 
@@ -39,7 +40,8 @@ export default {
             //CODE TO CHANGE SERVE / STATE
             if(this.isLiked)    {
                 likeService.unLikePost(this.post.postId).then(response =>   {
-                    if(response.status === 201) {
+                    if(response.status === 200) {
+                        console.log("RMEOVED")
                         this.likes = this.likes - 1
                         event.target.classList.remove('likeBtn')
                         this.isLiked =!this.isLiked
@@ -80,12 +82,18 @@ export default {
         }
     },
 
-    mounted()   {
+    created()   {
         //set isLiked to true or false depending on if is liked on database
-        console.log("test")
         likeService.getIsLiked(this.post.postId).then(response =>   {
-            console.log(response.data)
+            //console.log(response.data)
             this.isLiked = response.data
+
+            if(this.isLiked)    {
+                //NOT WORKING?
+                console.log("TEST----")
+                let element = document.getElementById("like")
+                element.classList.add('likeBtn')
+            }
         })
         //add catch?
     }

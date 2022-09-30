@@ -67,14 +67,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
-    {
-      path:"/picture/:postId",
-      name:"picDetails",
-      component: PhotoDetail,
-      meta: {
-        requiresAuth: true
-      }
-    },
+    // {
+    //   path:"/picture/:postId",
+    //   name:"picDetails",
+    //   component: PhotoDetail,
+    //   meta: {
+    //     requiresAuth: true
+    //   }
+    // },
     {
       path:"/test",
       name:"test",
@@ -95,10 +95,18 @@ const router = new Router({
       path:"/favorite",
       name: "favorite",
       component: FavoritesView,
-      meta:{
+      meta:{requiresAuth: true
+      }
+    },
+    {  
+    path:"/details",
+      name:"details",
+      component: PhotoDetail,
+      meta: {
         requiresAuth: true
       }
     }
+
 
 
   ]
