@@ -9,6 +9,7 @@ import store from '../store/index'
 import PhotoDetail from '../views/PhotoDetail'
 import PostFeed from '../components/PostFeed'
 import Post from '../components/Post'
+import FavoritesView from '../views/FavoritesView'
 
 
 Vue.use(Router)
@@ -91,7 +92,14 @@ const router = new Router({
       }
     },
     {
-      path:"/details/:postId",
+      path:"/favorite",
+      name: "favorite",
+      component: FavoritesView,
+      meta:{requiresAuth: true
+      }
+    },
+    {  
+    path:"/details",
       name:"details",
       component: PhotoDetail,
       meta: {
