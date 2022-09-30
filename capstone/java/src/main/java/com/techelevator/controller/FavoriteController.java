@@ -25,7 +25,7 @@ public class FavoriteController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/favorite/{postId}")
-    public void createFavorite(@PathVariable int postId, @RequestBody Favorite favorite, Principal principal){
+    public void createFavorite(@PathVariable int postId, Principal principal){
         int loggedInUserId = userDao.findIdByUsername(principal.getName());
 
         favoriteDao.create(postId, loggedInUserId);

@@ -90,6 +90,22 @@ public class JdbcPostDao implements PostDao {
     }
 
     @Override
+    public List<Post> getAllFavoritedPosts(int userId) {
+        List<Post> posts = new ArrayList<>();
+        String sql = "SELECT posts.user_id, favorites.post_id, post_picture, caption, date_posted FROM favorites \n" +
+                "Join posts on favorites.post_id = posts.post_id\n" +
+                "WHERE favorites.user_id = ?";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while(results.next()) {
+            Post post = mapRowToPost(results);
+            posts.add(post);
+        }
+
+        return posts;
+    }
+
+    @Override
     public List<Post> getRecentPosts() {
         List<Post> posts = new ArrayList<>();
         String sql = "SELECT post_id, user_id, post_picture, caption, date_posted FROM posts";

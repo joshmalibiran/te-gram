@@ -26,6 +26,10 @@ public interface PostDao {
 
     List<Post> getAllLikedPosts(int userId);
 
+    List<Post> getAllFavoritedPosts(int userId);
+
+
+
 
 
 

@@ -22,6 +22,7 @@
 
 <script>
 import likeService from '../services/LikeService'
+import favoriteService from '../services/FavoriteService'
 
 export default {
     name: 'single-post',
@@ -73,12 +74,37 @@ export default {
         toggleFavorite(event)   {
              //CODE TO CHANGE SERVE / STATE
             if(this.isFavorited)    {
-                event.target.classList.remove('favoriteBtn')
+                
+
+                favoriteService.unfavoritePost(this.post.postId).then(response => {
+                    if(response.status === 200) {
+                        event.target.classList.remove('favoriteBtn');
+                        this.isFavorited = !this.isFavorited;
+                    }
+                }).catch(error => {
+                if(error.response || error.response.status === 404) {
+                    alert(
+                        "Error unfavoriting Post"
+                    );
+                }
+                })
             }
             else{
-                event.target.classList.add('favoriteBtn')
+                
+                favoriteService.favoritePost(this.post.postId).then(response => {
+                    if(response.status === 201) {
+                        event.target.classList.add('favoriteBtn')
+                        this.isFavorited = !this.isFavorited;
+                    }
+                }).catch(error => {
+                if(error.response || error.response.status === 404) {
+                    alert(
+                        "Error favoriting Post"
+                    );
+                }
+                })
             }
-            this.isFavorited = !this.isFavorited
+            
         }
     },
 

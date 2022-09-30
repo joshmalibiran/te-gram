@@ -20,7 +20,7 @@ export default {
     methods:{
         retrieveFavoritePosts(){
             //pass userId into this method
-            favoriteService.getIsFavorite(this.$store.state.user.id).then(response=>{
+            favoriteService.getFavoritePosts().then(response=>{
                 this.$store.commit("SET_FAVORITE_POSTS", response.data)
             })
             .catch(error => {

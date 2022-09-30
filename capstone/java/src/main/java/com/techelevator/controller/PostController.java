@@ -153,4 +153,28 @@ public class PostController {
         return allPosts;
     }
 
+    @GetMapping(path = "/favorite")
+    public List<Post> getFavoritedPosts(Principal principal){
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
+
+        // loop through and set usernames
+        List<Post> allPosts = postDao.getAllFavoritedPosts(loggedInUserId);
+
+        for (Post currentPost : allPosts) {
+
+            //add likes to post
+            currentPost.setNumOfLikes(likeDao.getNumberOfLikes(currentPost.getPostId()));
+
+            //add comments to post
+            currentPost.setCommentsOnPost(commentDao.getCommentsByPostId(currentPost.getPostId()));
+
+            //store currentPostOwner useraccount
+            User currentPostOwner = userDao.getUserById(currentPost.getUserId());
+
+            currentPost.setUsername(currentPostOwner.getUsername());
+        }
+
+        return allPosts;
+    }
+
 }
