@@ -68,7 +68,6 @@
       <!-- The portfolio lightboxes -->
       <div class="portfolio-lightboxes">
         <!-- lightbox 01 -->
-
         <div id="portfolio-item-1" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
@@ -79,10 +78,9 @@
             </div>
           </div>
         </div>
-      </div>
 
       <!-- lightbox 02 -->
-      <div class="portfolio-lightboxes">
+      
         <div id="portfolio-item-2" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
@@ -93,10 +91,8 @@
             </div>
           </div>
         </div>
-      </div>
 
       <!-- lightbox 03 -->
-      <div class="portfolio-lightboxes">
         <div id="portfolio-item-3" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
@@ -107,11 +103,9 @@
             </div>
           </div>
         </div>
-      </div>
 
       <!-- lightbox 04 -->
 
-      <div class="portfolio-lightboxes">
         <div id="portfolio-item-4" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
@@ -122,10 +116,8 @@
             </div>
           </div>
         </div>
-      </div>
 
       <!-- lightbox 05 -->
-      <div class="portfolio-lightboxes">
         <div id="portfolio-item-5" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
@@ -139,10 +131,8 @@
             </div>
           </div>
         </div>
-      </div>
 
       <!-- lightbox 06 -->
-      <div class="portfolio-lightboxes">
         <div id="portfolio-item-6" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
@@ -153,14 +143,12 @@
             </div>
           </div>
         </div>
-      </div>
 
       <!-- lightbox 07 -->
-      <div class="portfolio-lightboxes">
         <div id="portfolio-item-7" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-              <img src="../images/lightbox/side-of-road-lightbox.png" alt="" />
+            <img src="../images/lightbox/side-of-road-lightbox.png" alt="" />
             <div class="navBtns">
               <div class="navBtns">
                 <a href="#portfolio-item-6" class="lb-prev"></a>
@@ -168,11 +156,9 @@
               </div>
             </div>
           </div>
-        </div>
       </div>
 
       <!-- lightbox 08 -->
-      <div class="portfolio-lightboxes">
         <div id="portfolio-item-8" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
@@ -183,11 +169,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- lightbox 09 -->
-    <div class="portfolio-lightboxes">
+      <!-- lightbox 09 -->
       <div id="portfolio-item-9" class="portfolio-lightbox">
         <div class="portfolio-lightbox_content">
           <a href="#portfolio" class="close"></a>
@@ -198,6 +181,8 @@
           </div>
         </div>
       </div>
+</div>
+    
     </div>
   </div>
 </template>
@@ -238,16 +223,16 @@ img {
   height: 100vh;
   background: rgba(31, 31, 31, 0.5);
   color: white;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  transform: scale(1, 0);
+  transform: scale(1, 1);
   transform-origin: center;
-  transition: transform ease-in-out 10ms;
+  transition: transform ease-in-out 1000ms;
 }
 .portfolio-lightbox:target {
+  display: flex;
   transform: scale(1.5, 1.5);
-  transform-origin: center;
 }
 .portfolio-lightbox_content {
   width: 18%;
@@ -279,6 +264,7 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  margin-right: 85px;
 }
 .lb-next,
 .lb-prev {
