@@ -15,5 +15,6 @@ public interface FavoriteDao {
     //get likes
     List<Favorite> getFavoritesFromUserId(int userId);
 
+    boolean isPostFavoritedByUserId(int postId, int userId);
 
 }
