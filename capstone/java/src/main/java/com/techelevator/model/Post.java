@@ -16,6 +16,8 @@ public class Post {
     private int numOfLikes;
     private List<Comment> commentsOnPost;
     private LocalDateTime datePosted;
+    private boolean isLiked;
+    private boolean isFavorited;
     //add post date
 
     public Post () {};
@@ -28,6 +30,22 @@ public class Post {
         this.datePosted = datePosted;
 //        this.rating = rating;
         //add post date
+    }
+
+    public boolean isFavorited() {
+        return isFavorited;
+    }
+
+    public void setFavorited(boolean favorited) {
+        isFavorited = favorited;
+    }
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
     }
 
     public int getPostId() {

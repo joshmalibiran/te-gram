@@ -1,9 +1,6 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.CommentDao;
-import com.techelevator.dao.LikeDao;
-import com.techelevator.dao.PostDao;
-import com.techelevator.dao.UserDao;
+import com.techelevator.dao.*;
 import com.techelevator.model.Post;
 import com.techelevator.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +26,8 @@ public class PostController {
     private CommentDao commentDao;
     @Autowired
     private LikeDao likeDao;
+    @Autowired
+    private FavoriteDao favoriteDao;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/post")
@@ -39,8 +38,9 @@ public class PostController {
     }
 
     @GetMapping(path = "/post")
-    public List<Post> getAllPosts() {
+    public List<Post> getAllPosts(Principal principal) {
         //loop through and set usernames
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
         List<Post> allPosts = postDao.getRecentPosts();
 
         for (Post currentPost : allPosts) {
@@ -55,6 +55,10 @@ public class PostController {
             User currentPostOwner = userDao.getUserById(currentPost.getUserId());
 
             currentPost.setUsername(currentPostOwner.getUsername());
+
+            currentPost.setLiked(likeDao.isPostLikedByUserId(currentPost.getPostId(), loggedInUserId));
+
+            currentPost.setFavorited(favoriteDao.isPostFavoritedByUserId(currentPost.getPostId(),loggedInUserId));
         }
 
 
@@ -67,8 +71,8 @@ public class PostController {
     }
 
     @GetMapping(path = "/post/{postId}")
-    public Post getPostByPostId(@PathVariable int postId) {
-
+    public Post getPostByPostId(@PathVariable int postId, Principal principal) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
         Post post = postDao.getPostByPostId(postId);
         User postOwner = userDao.getUserById(post.getUserId());
         post.setUsername(postOwner.getUsername());
@@ -78,6 +82,10 @@ public class PostController {
 
         //set numOfLikes on post
         post.setNumOfLikes(likeDao.getNumberOfLikes(postId));
+
+        post.setLiked(likeDao.isPostLikedByUserId(post.getPostId(), loggedInUserId));
+
+        post.setFavorited(favoriteDao.isPostFavoritedByUserId(post.getPostId(),loggedInUserId));
 
 
         return post;
@@ -107,7 +115,8 @@ public class PostController {
 //    }
 
     @GetMapping(path = "profile/{username}")
-    public List<Post> getPostsByUserId(@PathVariable String username) {
+    public List<Post> getPostsByUserId(@PathVariable String username, Principal principal) {
+        int loggedInUserId = userDao.findIdByUsername(principal.getName());
         List<Post> allUserPosts = new ArrayList<>();
         allUserPosts = postDao.getPostsByUsername(username);
 
@@ -121,6 +130,10 @@ public class PostController {
 
             //store currentPostOwner useraccount
             User currentPostOwner = userDao.getUserById(currentPost.getUserId());
+
+            currentPost.setLiked(likeDao.isPostLikedByUserId(currentPost.getPostId(), loggedInUserId));
+
+            currentPost.setFavorited(favoriteDao.isPostFavoritedByUserId(currentPost.getPostId(),loggedInUserId));
 
             currentPost.setUsername(username);
         }
@@ -147,6 +160,10 @@ public class PostController {
             //store currentPostOwner useraccount
             User currentPostOwner = userDao.getUserById(currentPost.getUserId());
 
+            currentPost.setLiked(likeDao.isPostLikedByUserId(currentPost.getPostId(), loggedInUserId));
+
+            currentPost.setFavorited(favoriteDao.isPostFavoritedByUserId(currentPost.getPostId(),loggedInUserId));
+
             currentPost.setUsername(currentPostOwner.getUsername());
         }
 
@@ -170,6 +187,10 @@ public class PostController {
 
             //store currentPostOwner useraccount
             User currentPostOwner = userDao.getUserById(currentPost.getUserId());
+
+            currentPost.setLiked(likeDao.isPostLikedByUserId(currentPost.getPostId(), loggedInUserId));
+
+            currentPost.setFavorited(favoriteDao.isPostFavoritedByUserId(currentPost.getPostId(),loggedInUserId));
 
             currentPost.setUsername(currentPostOwner.getUsername());
         }

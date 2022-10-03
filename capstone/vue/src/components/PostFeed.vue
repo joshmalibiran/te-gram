@@ -44,9 +44,6 @@ export default {
 </script>
 
 <style>
-#card {
-  padding-bottom: 5%;
-  margin-bottom: 5%;
-}
+
 
 </style>

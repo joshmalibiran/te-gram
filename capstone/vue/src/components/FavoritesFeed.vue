@@ -43,6 +43,8 @@ export default {
 
 <style>
 #card {
+  display: flex;
+  justify-content: center;
   padding-bottom: 5%;
   margin-bottom: 5%;
 }
