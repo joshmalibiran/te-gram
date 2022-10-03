@@ -19,6 +19,11 @@ import comments from '../components/Comments.vue'
 import NavigationBar from '../components/NavigationBar.vue';
 
 export default {
+    data()  {
+      return{
+        postId:''
+      }
+    },
     components:  {
         singlePost,
         comments,
@@ -26,6 +31,7 @@ export default {
     },
     created() {
       postService.getPostById(this.$route.params.postId).then(response => {
+        this.postId = this.$route.params.postId
         console.log(response.data)
         this.post = response.data
         this.$store.commit("SET_CURRENT_POST", response.data)

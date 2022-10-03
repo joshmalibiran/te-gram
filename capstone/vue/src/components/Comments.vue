@@ -31,7 +31,7 @@ export default {
     created()   {
         postService.getPostById(this.$route.params.postId).then(response => {
             this.$store.commit("SET_COMMENTS", response.data)
-            console.log(this.post)
+            //console.log(this.post)
         })
     },
     methods:    {
@@ -40,7 +40,7 @@ export default {
             // this.createdComment.userId = 2
             commentService.createComment(this.createdComment).then(response =>   {
                 if(response.status === 201) {
-                   this.$router.go()
+                    this.$router.go();
                 }
             })
             .catch(error => {

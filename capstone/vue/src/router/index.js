@@ -100,7 +100,7 @@ const router = new Router({
       }
     },
     {  
-    path:"/details",
+    path:"/details/:postId",
       name:"details",
       component: PhotoDetail,
       meta: {
