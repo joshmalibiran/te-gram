@@ -5,12 +5,13 @@
         <img :src="post.postPicture" id="picture" />
         </router-link>
         <div id = "btns">
-            <button v-on:click="toggleLike()" id="like" :class=" (isLikeClicked) ? 'likeBtn': '' ">Like</button>
-            <button v-on:click="toggleFavorite()" :class= "(isFavorited) ? 'favoriteBtn': ''">Favorite</button>
+            <button v-on:click="toggleLike()" id="like" :class=" post.liked ? 'likeBtn': '' ">Like</button>
+            <button v-on:click="toggleFavorite()" :class="post.favorited ? 'favoriteBtn': '' ">Favorite</button>
         </div>
         <div id = "info"> 
-        <p>{{likes}} Likes</p>   
+        <p>{{post.numOfLikes}} Likes</p>   
         <p><b>{{post.username}}</b> {{post.caption}}</p>
+        <p>{{ post.numOfLikes }} </p>
         </div>
       </div>
 
@@ -30,7 +31,6 @@ export default {
             isLikeClicked: this.post.liked,
             isFavorited: this.post.favorited,
             likes: this.post.numOfLikes
-
         }
     },
 
@@ -99,6 +99,10 @@ export default {
             }
             
         }
+    },
+
+    created() {
+        console.log(this.post);
     }
 }
 </script>

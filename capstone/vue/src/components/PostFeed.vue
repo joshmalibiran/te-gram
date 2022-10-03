@@ -21,7 +21,7 @@ export default {
         retrieveRecentPosts(){
             postService.getRecentPost().then(response=>{
                 //this.retrieveRecentPosts = response.data;
-                this.recentPost = response.data;
+                // this.recentPost = response.data;
                 this.$store.commit("SET_RECENT_POSTS", response.data)
             })
             .catch(error => {
