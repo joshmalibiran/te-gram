@@ -123,8 +123,8 @@ button {
   width: 155px;
   border-radius: 10px;
   margin-left: 3px;
-  border: 1px solid black;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border: 1px solid black;
 }
 #login-box{
   display: flex;
