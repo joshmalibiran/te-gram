@@ -2,7 +2,7 @@
   <div id="home">
     <div class = page>
     <homepage/>
-    <!-- <post-feed/> -->
+    <navigation-bar/>
     </div>
   </div>
   
@@ -10,19 +10,13 @@
 
 <script>
 import Homepage from "../components/HomePage.vue"
-// import postFeed from "../components/PostFeed.vue"
+import NavigationBar from '../components/NavigationBar.vue';
 
 export default {
   components: {
     Homepage,
-    // postFeed
+    NavigationBar,
   },
   name: "home"
 };
 </script>
-<style scoped>
-.page {
-  
-}
-
-</style>
