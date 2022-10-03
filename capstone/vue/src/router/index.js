@@ -108,8 +108,8 @@ const router = new Router({
       }
     },
     {
-      path: "/profile/:username",
-      name: "PublicUserProfile",
+      path: '/profile/:username',
+      name: 'PublicUserProfile',
       component: PublicUserProfile,
       meta: {
         requiresAuth: true

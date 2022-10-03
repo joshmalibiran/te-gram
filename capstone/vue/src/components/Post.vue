@@ -1,7 +1,5 @@
 <template>
   <div>
-
-      
       <div id = card>
           <router-link :to="{ name: 'details', params: { postId: post.postId}}">
         <img :src="post.postPicture" id="picture" />

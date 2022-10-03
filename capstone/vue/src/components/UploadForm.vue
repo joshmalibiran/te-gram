@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-link v-bind:to="{ name: 'home' }">TE Gram</router-link>
     <h1>UPLOAD YOUR PHOTO</h1>
       <form id="upload" @submit.prevent="submitForm">
         <label for="postPicture"> Post Link </label>
