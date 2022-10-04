@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Post;
+import com.techelevator.model.User;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,8 +1,10 @@
 <template>
   <div>
       <h1>{{ this.username }}</h1>
+      <div  id="userPosts">
       <div v-for="post in this.$store.state.currentProfilePosts" v-bind:key="post.postId">
           <SinglePost :post="post"/>
+          </div>
       </div>
     </div>
 </template>
@@ -43,5 +45,10 @@ export default {
 </script>
 
 <style>
-
+#userPosts{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+    margin-left: 200px;
+}
 </style>

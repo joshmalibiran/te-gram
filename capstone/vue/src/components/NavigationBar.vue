@@ -26,7 +26,19 @@
 
 <script>
 export default {
+  components: { },
     name: "nav-bar",
+    
+}
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navPanel").style.left = "0";
+  } else {
+    document.getElementById("navPanel").style.left = "-200px";
+  }
+  prevScrollpos = currentScrollPos;
 }
 </script>
 
@@ -50,6 +62,7 @@ export default {
   top: 0;
   left: 0;
   width: 175px;
+  transition: left 0.5s;
 }
 .panel {
   margin-bottom: 10px;
