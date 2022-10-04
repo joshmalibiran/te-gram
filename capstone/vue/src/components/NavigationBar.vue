@@ -1,6 +1,5 @@
 <template>
     <sidebar id="navPanel">
-      <searchbar/>
       <router-link v-bind:to="{ name: 'home' }"><img id="logo" src="../images/TE-GRAM.jpg" /></router-link>
       <router-link v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
       <p>{{this.$store.state.user.username}}</p>
@@ -26,10 +25,20 @@
 </template>
 
 <script>
-import Searchbar from './Searchbar.vue'
 export default {
-  components: { Searchbar },
+  components: { },
     name: "nav-bar",
+    
+}
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navPanel").style.left = "0";
+  } else {
+    document.getElementById("navPanel").style.left = "-200px";
+  }
+  prevScrollpos = currentScrollPos;
 }
 </script>
 
@@ -53,6 +62,7 @@ export default {
   top: 0;
   left: 0;
   width: 175px;
+  transition: left 0.5s;
 }
 .panel {
   margin-bottom: 10px;

@@ -11,6 +11,7 @@ import PostFeed from '../components/PostFeed'
 import Post from '../components/Post'
 import FavoritesView from '../views/FavoritesView'
 import PublicUserProfile from '../views/PublicUserProfile.vue'
+import SearchPage from '../views/Search.vue'
 
 
 Vue.use(Router)
@@ -111,6 +112,14 @@ const router = new Router({
       path: '/profile/:username',
       name: 'PublicUserProfile',
       component: PublicUserProfile,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/results',
+      name: 'searchUsers',
+      component: SearchPage,
       meta: {
         requiresAuth: true
       }

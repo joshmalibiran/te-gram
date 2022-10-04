@@ -1,19 +1,14 @@
 <template>
   <div>
-    <form action="" class="search-bar" v-on:submit.prevent="filterUsers">
+    <form action="" class="search-bar" v-on:keyup.prevent="filterUsers()">
       <input type="text" v-model="search" placeholder="Search Username" />
       <div
-        v-for="user in users"
+        v-for="user in filterUsers()"
         class="singleUser"
         v-bind:key="user.id"
         v-bind:user="user"
-      ><router-link v-bind:to="{name: 'PublicUserProfile', params: {username: user.username}}">
-          <div id="results">
-          <img id="profilePic" src="user.user_picture"/>
-          {{user.username}}
-          </div>
-          </router-link></div>
-      <button type="submit" value="submit">Search</button>
+      ></div>
+      <button class="search-btn" type="submit">Search</button>
     </form>
   </div>
 </template>
@@ -26,7 +21,7 @@ export default {
     name: 'searchBar',
 data(){
     return{
-      users: [],
+      user: [],
       search: '',
       post: [],
 
@@ -38,36 +33,27 @@ data(){
   },
   methods: {
       filterUsers(){
-          console.log(this.users);
-          UserService.getUsersByUsername(this.search).then(response => {
-              this.users = response.data;
-              console.log(this.users);
+          UserService.getUsersByUsername().then(response => {
+              this.user = response.data;
           })
       }
 
 },
   computed:{
-    // filteredUsernames(){
+    filteredUsernames(){
 
-    //   return this.user.filter((username) => {
-    //     return username.toLowerCase().includes();
-    //   })
-    // }
+      return this.user.filter((username) => {
+        return username.toLowerCase().includes();
+      })
+    }
   }
 };
 
 
 </script>
+    
 
 <style>
-#results{
-    display: flex;
-    flex-direction: row;
-}
-#profilePic{
-    margin-right: 5px;
-
-}
 .search-bar input,
 .search-btn,
 .search-btn:before,
@@ -153,7 +139,7 @@ data(){
   transform: translate(0.2em, 0) rotate(45deg);
   transform-origin: 0 50%;
 }
-.search-btn {
+.search-btn span {
   display: inline-block;
   overflow: hidden;
   width: 1px;
