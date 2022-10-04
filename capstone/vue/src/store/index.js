@@ -31,7 +31,8 @@ export default new Vuex.Store({
       image: '',
       commentSection: '',
       datePosted: '',
-      postId:''
+      postId:'',
+      numOfLikes:'',
     }
   },
   mutations: {

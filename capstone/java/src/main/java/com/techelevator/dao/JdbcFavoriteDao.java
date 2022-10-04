@@ -46,6 +46,14 @@ public class JdbcFavoriteDao implements FavoriteDao {
         return favoritesList;
     }
 
+    @Override
+    public boolean isPostFavoritedByUserId(int postId, int userId)  {
+        String sql = "select COUNT(*) from favorites where user_id = ? and post_id = ?";
+        int count = jdbcTemplate.queryForObject(sql, Integer.class, userId, postId);
+        return count == 1;
+
+    }
+
     private Favorite mapRowToFavorite(SqlRowSet rs) {
         Favorite favorite = new Favorite();
         favorite.setPostId(rs.getInt("post_id"));

@@ -5,12 +5,13 @@
         <img :src="post.postPicture" id="picture" />
         </router-link>
         <div id = "btns">
-            <button v-on:click="toggleLike($event)" id="like">Like</button>
-            <button v-on:click="toggleFavorite($event)">Favorite</button>
+            <button v-on:click="toggleLike()" id="like" :class=" post.liked ? 'likeBtn': '' ">Like</button>
+            <button v-on:click="toggleFavorite()" :class="post.favorited ? 'favoriteBtn': '' ">Favorite</button>
         </div>
         <div id = "info"> 
-        <p>{{likes}} Likes</p>   
+        <p>{{post.numOfLikes}} Likes</p>   
         <p><b>{{post.username}}</b> {{post.caption}}</p>
+        <p>{{ post.numOfLikes }} </p>
         </div>
       </div>
 
@@ -27,23 +28,20 @@ export default {
     props: ['post'],
     data()  {
         return{ 
-            isLiked: false,
-            isFavorited: false,
+            isLikeClicked: this.post.liked,
+            isFavorited: this.post.favorited,
             likes: this.post.numOfLikes
-
         }
     },
 
     methods: {
-        toggleLike(event)    {
+        toggleLike()    {
             //CODE TO CHANGE SERVE / STATE
-            if(this.isLiked)    {
+            if(this.isLikeClicked)    {
                 likeService.unLikePost(this.post.postId).then(response =>   {
                     if(response.status === 200) {
-                        console.log("RMEOVED")
                         this.likes = this.likes - 1
-                        event.target.classList.remove('likeBtn')
-                        this.isLiked =!this.isLiked
+                        this.isLikeClicked =!this.isLikeClicked
                     }
                 })
                 //catch?
@@ -53,8 +51,7 @@ export default {
                 likeService.likePost(this.post.postId).then(response => {
                     if(response.status === 201) {
                         this.likes = this.likes + 1
-                        event.target.classList.add('likeBtn')
-                        this.isLiked =!this.isLiked
+                        this.isLikeClicked =!this.isLikeClicked
                     }
                 })
                 .catch(error => {
@@ -69,14 +66,13 @@ export default {
     
            
         },
-        toggleFavorite(event)   {
+        toggleFavorite()   {
              //CODE TO CHANGE SERVE / STATE
             if(this.isFavorited)    {
                 
 
                 favoriteService.unfavoritePost(this.post.postId).then(response => {
                     if(response.status === 200) {
-                        event.target.classList.remove('favoriteBtn');
                         this.isFavorited = !this.isFavorited;
                     }
                 }).catch(error => {
@@ -91,7 +87,6 @@ export default {
                 
                 favoriteService.favoritePost(this.post.postId).then(response => {
                     if(response.status === 201) {
-                        event.target.classList.add('favoriteBtn')
                         this.isFavorited = !this.isFavorited;
                     }
                 }).catch(error => {
@@ -106,20 +101,8 @@ export default {
         }
     },
 
-    created()   {
-        //set isLiked to true or false depending on if is liked on database
-        likeService.getIsLiked(this.post.postId).then(response =>   {
-            //console.log(response.data)
-            this.isLiked = response.data
-
-            if(this.isLiked)    {
-                //NOT WORKING?
-                console.log("TEST----")
-                let element = document.getElementById("like")
-                element.classList.add('likeBtn')
-            }
-        })
-        //add catch?
+    created() {
+        console.log(this.post);
     }
 }
 </script>

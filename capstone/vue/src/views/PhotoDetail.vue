@@ -19,18 +19,39 @@ import comments from '../components/Comments.vue'
 import NavigationBar from '../components/NavigationBar.vue';
 
 export default {
+    data()  {
+      return{
+        postId:'',
+      }
+    },
     components:  {
         singlePost,
         comments,
         NavigationBar  
     },
-    created() {
-      postService.getPostById(this.$route.params.postId).then(response => {
+    methods: {
+      retrievePost() {
+        postService.getPostById(this.$route.params.postId).then(response => {
+        this.postId = this.$route.params.postId
         console.log(response.data)
-        this.post = response.data
+
+        // this.post = response.data
         this.$store.commit("SET_CURRENT_POST", response.data)
+
+        console.log('store state post');
+      console.log(this.$store.state.post);
       })
-    }
+      }
+    },
+    // computed: {
+    //   post() {
+    //     return this.$store.state.post;
+    //   }
+    // },
+    created() {
+      this.retrievePost();
+      
+    },
 }
 </script>
 
