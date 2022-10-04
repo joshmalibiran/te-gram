@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Post;
+import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -104,6 +105,8 @@ public class JdbcPostDao implements PostDao {
 
         return posts;
     }
+
+
 
     @Override
     public List<Post> getRecentPosts() {

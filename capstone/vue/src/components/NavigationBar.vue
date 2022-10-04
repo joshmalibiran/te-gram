@@ -1,5 +1,6 @@
 <template>
     <sidebar id="navPanel">
+      <searchbar/>
       <router-link v-bind:to="{ name: 'home' }"><img id="logo" src="../images/TE-GRAM.jpg" /></router-link>
       <router-link v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
       <p>{{this.$store.state.user.username}}</p>
@@ -25,7 +26,9 @@
 </template>
 
 <script>
+import Searchbar from './Searchbar.vue'
 export default {
+  components: { Searchbar },
     name: "nav-bar",
 }
 </script>

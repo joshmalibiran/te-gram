@@ -177,4 +177,17 @@ public class PostController {
         return allPosts;
     }
 
+    @GetMapping(path="/results/{username}")
+    public List<User> getListOfUsersByUsername(@PathVariable String username) {
+        List<User> allUsersByUsername = new ArrayList<>();
+        allUsersByUsername = userDao.getUsersByUsername(username);
+
+
+        for (User users : allUsersByUsername) {
+            users.setUsername(users.getUsername());
+        }
+
+        return allUsersByUsername;
+    }
+
 }

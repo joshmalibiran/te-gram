@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import com.techelevator.model.Post;
 import com.techelevator.model.UserNotFoundException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -81,6 +82,24 @@ public class JdbcUserDao implements UserDao {
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
 
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole, email, picture) == 1;
+    }
+    @Override
+    public List<User> getUsersByUsername(String username) {
+        List<User> users = new ArrayList<>();
+        String statement = "%" + username + "%";
+        String sql = "SELECT user_id, username, user_picture from users where username LIKE ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, statement);
+
+        while (results.next()) {
+            User user = new User();
+            user.setId(results.getInt("user_id"));
+            user.setUsername(results.getString("username"));
+            user.setPicture(results.getString("user_picture"));
+            users.add(user);
+        }
+
+        return users;
     }
 
     private User mapRowToUser(SqlRowSet rs) {
