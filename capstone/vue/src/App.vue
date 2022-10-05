@@ -13,7 +13,7 @@
 <style>
 body {
   background: url("https://t3.ftcdn.net/jpg/02/14/26/32/360_F_214263275_yFsy0Uk8QXxqp1vf31hHiJ0zKJwKdcoS.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background-position: center;
   background-size: cover;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",

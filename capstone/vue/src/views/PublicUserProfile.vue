@@ -1,6 +1,6 @@
 <template>
     <div id="profile">
-    <UserGallery/>
+    <UserGallery id="UserGallery"/>
     <navigation-bar/>
     </div>
 </template>
@@ -24,5 +24,8 @@ export default {
 #profile{
     display:flex;
     justify-content: center;
+}
+#UserGallery{
+width: 100vw;
 }
 </style>

@@ -128,13 +128,14 @@ export default {
     justify-content: center;
     border: 5px solid black;
     background-color: rgba(96, 193, 238, 0.867);
+    width: 600px;
 }
 
 #picture    {
     height: auto;
     width:auto;
-    max-height: 600px;
-    max-width: 600px;
+    /* max-height: 600px;
+    max-width: 600px; */
 }
 
 .likeBtn    {

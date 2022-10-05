@@ -1,21 +1,22 @@
 <template>
     <sidebar id="navPanel">
-      <router-link v-bind:to="{ name: 'home' }"><img id="logo" src="../images/TE-GRAM.jpg" /></router-link>
-      <router-link v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
+      <router-link id="magGlass" class="links" v-bind:to="{name: 'searchUsers'}"><img src="../images/animation-science-magnifyglass.gif"/></router-link>
+      <router-link class="links" v-bind:to="{ name: 'home' }"><img id="logo" src="../images/TE-GRAM.jpg" /></router-link>
+      <router-link id="usernameLink" class="links" v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
       <p>{{this.$store.state.user.username}}</p>
       </router-link>
-      <router-link v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
-        <img id="profilePicture" src="../images/default.jpg" />
+      <router-link class="links" v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
       </router-link>
+       <img id="profilePicture" src="../images/default.jpg" />
       <router-link
-        class="panel"
+        class="links"
         v-bind:to="{ name: 'upload' }"
         v-if="$store.state.token != ''"
-        >Upload Photo</router-link
+        ><img id="upload" src="../images/Upload-Icon.png"/></router-link
       >
-      <router-link v-bind:to="{ name: 'favorite'}">Favorites</router-link>
+      <router-link  class="links" v-bind:to="{ name: 'favorite'}">Favorites</router-link>
       <router-link
-        class="panel"
+        class="links"
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
         >Logout</router-link
@@ -44,6 +45,18 @@ window.onscroll = function() {
 
 
 <style>
+#usernameLink{
+  font-size: 25px;
+}
+#upload{
+  height: auto;
+  width: auto;
+  max-height: 50px;
+}
+#magGlass{
+  height: 100px;
+  width: 100px;
+}
 #navPanel > #logo {
   height: auto;
   width: auto;
@@ -75,5 +88,13 @@ window.onscroll = function() {
   width: 150px;
   border-radius: 50%;
   margin-bottom: 10px;
+}
+.links{
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+}
+.links:hover{
+  color: teal;
 }
 </style>

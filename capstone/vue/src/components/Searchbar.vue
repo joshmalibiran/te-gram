@@ -1,21 +1,26 @@
 <template>
-  <div>
+  <div id="searchForm">
+    <img id="overlay" src="../images/background-cohortpic.png"/>
     <form action="" class="search-bar" v-on:submit.prevent="filterUsers">
-      <input type="text" v-model="search" placeholder="Search Username" />
+      <input id="input" type="text" v-model="search" placeholder="Search Username" />
+      
+      <div id="buttons">
+      <button id="submitBtn" type="submit" value="submit">Search</button>
+      <button id="clearBtn" type="clear" value="clear">Clear</button>
+      </div>
       <div
         v-for="user in users"
         class="singleUser"
         v-bind:key="user.id"
         v-bind:user="user"
       >
-        <router-link v-bind:to="{name: 'PublicUserProfile', params: {username: user.username}}">
-          <div id="results">
+        <router-link id="resultsLink" v-bind:to="{name: 'PublicUserProfile', params: {username: user.username}}">
+          <div id="results" v-if="hasResults">
           <img id="profilePic" src="user.user_picture" />
           {{ user.username }}
           </div>
         </router-link>
       </div>
-      <button type="submit" value="submit">Search</button>
     </form>
   </div>
 </template>
@@ -31,6 +36,7 @@ export default {
       user: [],
       search: "",
       post: [],
+      hasResults: false,
     };
   },
   components: {},
@@ -40,9 +46,11 @@ export default {
       console.log(this.users);
       UserService.getUsersByUsername(this.search).then(response => {
         this.users = response.data;
+        this.hasResults = true;
         console.log(this.users);
       })
     },
+    
   },
   computed: {
     filteredUsernames() {
@@ -56,102 +64,50 @@ export default {
     
 
 <style>
+#searchForm{
+  display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+}
+#input{
+  position: relative;
+  border-radius: 10px;
+  height: 30px;
+  width: 40vw;
+}
 #results{
+  position: relative;
     display: flex;
     flex-direction: row;
+    background-color: white;
+    width: 40vw;
+}
+#resultsLink{
+    text-decoration: none;
 }
 #profilePic{
     margin-right: 5px;
 
 }
-.search-bar input,
-.search-btn,
-.search-btn:before,
-.search-btn:after {
-  transition: all 0.25s ease-out;
-}
-.search-bar input,
-.search-btn {
-  width: 3em;
-  height: 3em;
-}
-.search-bar input:invalid:not(:focus),
-.search-btn {
-  cursor: pointer;
-}
-.search-bar,
-.search-bar input:focus,
-.search-bar input:valid {
-  width: 110px;
-  height: 50px;
-}
-.search-bar input:focus,
-.search-bar input:not(:focus) + .search-btn:focus {
-  outline: transparent;
-}
-.search-bar {
-  margin: 50px;
-  padding: 1.5em;
-  justify-content: center;
-  max-width: 30em;
-}
-.search-bar input {
-  background: transparent;
-  border-radius: 1.5em;
-  padding: 0.75em;
-  transform: translate(0.5em, 0.5em) scale(0.5);
-  transform-origin: 100% 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-.search-bar input::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-.search-bar input:focus,
-.search-bar input:valid {
-  background: #fff;
-  border-radius: 0.375em 0 0 0.375em;
-  box-shadow: 0 0 0 0.1em #d9d9d9 inset;
-  transform: scale(1);
-}
-.search-btn {
-  background: #171717;
-  border-radius: 0 0.75em 0.75em 0 / 0 1.5em 1.5em 0;
-  padding: 0.75em;
+
+#submitBtn, #clearBtn{
   position: relative;
-  transform: translate(0.25em, 0.25em) rotate(45deg) scale(0.25, 0.125);
-  transform-origin: 0 50%;
+  border-radius: 10px;
+  height: 30px;
+  width: 200px;
+
 }
-.search-btn:before,
-.search-btn:after {
-  content: "";
-  display: block;
-  opacity: 0;
+#buttons{
+  display: flex;
+  justify-content: space-evenly;
+}
+#overlay{
   position: absolute;
-}
-.search-btn:before {
-  border-radius: 50%;
-  box-shadow: 0 0 0 0.2em #f1f1f1 inset;
-  top: 0.75em;
-  left: 0.75em;
-  width: 1.2em;
-  height: 1.2em;
-}
-.search-btn:after {
-  background: #f1f1f1;
-  border-radius: 0 0.25em 0.25em 0;
-  top: 51%;
-  left: 51%;
-  width: 0.75em;
-  height: 0.25em;
-  transform: translate(0.2em, 0) rotate(45deg);
-  transform-origin: 0 50%;
-}
-.search-btn span {
-  display: inline-block;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
+  opacity: 0.3;
+  height: auto;
+  width: auto;
+  max-height: 1000px;
+  max-width: 1000px;
 }
 </style>
