@@ -17,4 +17,6 @@ public interface UserDao {
     boolean create(String username, String password, String role, String email, String picture);
 
     List<User> getUsersByUsername(String username);
+
+    boolean updateUserById(int userId, String newUsername, String password, String email, String picture);
 }

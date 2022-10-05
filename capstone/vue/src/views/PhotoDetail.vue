@@ -2,7 +2,7 @@
   <div>
     <navigation-bar/>
     <div id = detailCard>
-      <single-post v-bind:post="this.$store.state.post"/>
+      <single-post v-bind:post="this.$store.state.post" v-if="postExists"/>
       <div id = commentBox>
       <comments v-bind:postId="this.$route.params.postId"/>
       </div>
@@ -21,6 +21,7 @@ import NavigationBar from '../components/NavigationBar.vue';
 export default {
     data()  {
       return{
+        postExists: null,
         postId:'',
       }
     },
@@ -37,6 +38,7 @@ export default {
 
         // this.post = response.data
         this.$store.commit("SET_CURRENT_POST", response.data)
+        this.postExists = true;
 
         console.log('store state post');
       console.log(this.$store.state.post);
@@ -58,12 +60,13 @@ export default {
 <style>
 #detailCard {
   display:flex;
-  justify-content: center;
+  justify-content: center;  
 }
 
 #commentBox {
   background-color:white;
-  width:auto;
+  width:300px;
+  height: 500px
 }
 
 </style>

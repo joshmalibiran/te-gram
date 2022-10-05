@@ -102,6 +102,15 @@ public class JdbcUserDao implements UserDao {
         return users;
     }
 
+
+    @Override
+    public boolean updateUserById(int userId, String newUsername, String password, String email, String picture)  {
+        String sql = "UPDATE users SET user_id = ?, username = ?, password_hash = ?, role = ?, user_picture = ?, email = ? WHERE user_id = ?";
+        String password_hash = new BCryptPasswordEncoder().encode(password);
+        String role = "ROLE_USER";
+        return jdbcTemplate.update(sql, userId, newUsername, password_hash, role, picture, email, userId) == 1;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));

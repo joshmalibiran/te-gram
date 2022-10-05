@@ -5,13 +5,12 @@
         <img :src="post.postPicture" id="picture" />
         </router-link>
         <div id = "btns">
-            <button v-on:click="toggleLike()" id="like" :class=" post.liked ? 'likeBtn': '' ">Like</button>
-            <button v-on:click="toggleFavorite()" :class="post.favorited ? 'favoriteBtn': '' ">Favorite</button>
+            <button v-on:click="toggleLike()" id="like" :class=" isLikeClicked ? 'likeBtn': '' ">Like</button>
+            <button v-on:click="toggleFavorite()" :class="isFavorited ? 'favoriteBtn': '' ">Favorite</button>
         </div>
         <div id = "info"> 
-        <p>{{post.numOfLikes}} Likes</p>   
+        <p>{{likes}} Likes</p>   
         <p><b>{{post.username}}</b> {{post.caption}}</p>
-        <p>{{ post.numOfLikes }} </p>
         </div>
       </div>
 
@@ -41,6 +40,7 @@ export default {
                 likeService.unLikePost(this.post.postId).then(response =>   {
                     if(response.status === 200) {
                         this.likes = this.likes - 1
+
                         this.isLikeClicked =!this.isLikeClicked
                     }
                 })
@@ -51,6 +51,7 @@ export default {
                 likeService.likePost(this.post.postId).then(response => {
                     if(response.status === 201) {
                         this.likes = this.likes + 1
+
                         this.isLikeClicked =!this.isLikeClicked
                     }
                 })

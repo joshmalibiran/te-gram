@@ -1,7 +1,7 @@
 <template>
   <div>
-      <div v-for="post in this.$store.state.recentPosts" v-bind:key="post.postId" class = card>
-      <SinglePost v-bind:post="post"/>
+      <div v-for="post in this.$store.state.recentPosts" v-bind:key="post.postId" class = card> 
+      <SinglePost v-bind:post="post" v-if="postExists"/>
       </div>
   </div>
 </template>
@@ -12,6 +12,11 @@ import postService from '../services/PostService';
 
 export default {
     name:'post-feed',
+    data()  {
+      return{
+        postExists: null
+      }
+    },
 
     components: {
         SinglePost
@@ -23,6 +28,7 @@ export default {
                 //this.retrieveRecentPosts = response.data;
                 // this.recentPost = response.data;
                 this.$store.commit("SET_RECENT_POSTS", response.data)
+                this.postExists = true;
             })
             .catch(error => {
             if (error.response && error.response.status === 404) {
@@ -37,7 +43,7 @@ export default {
     
     },
 
-    created(){
+    mounted(){
             this.retrieveRecentPosts();
     }
 }
