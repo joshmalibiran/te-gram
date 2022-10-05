@@ -1,7 +1,7 @@
 <template>
   <div>
       <div id="profileHeader">
-    <h1 id="username">{{ this.username }}</h1>
+    <h1 id="username">{{ this.username }}'s Profile</h1>
       </div>
       <div id="userPosts">
       <div
@@ -58,6 +58,6 @@ export default {
   column-gap: 5px;
 }
 #profileHeader{
-    background-color: peachpuff;
+    background-color: rgb(207, 234, 255);
 }
 </style>
