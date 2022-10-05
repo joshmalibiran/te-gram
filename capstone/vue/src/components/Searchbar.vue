@@ -1,59 +1,69 @@
 <template>
   <div>
-    <form action="" class="search-bar" v-on:keyup.prevent="filterUsers()">
+    <form action="" class="search-bar" v-on:submit.prevent="filterUsers">
       <input type="text" v-model="search" placeholder="Search Username" />
       <div
-        v-for="user in filterUsers()"
+        v-for="user in users"
         class="singleUser"
         v-bind:key="user.id"
         v-bind:user="user"
-      ></div>
-      <button class="search-btn" type="submit">Search</button>
+      >
+        <router-link v-bind:to="{name: 'PublicUserProfile', params: {username: user.username}}">
+          <div id="results">
+          <img id="profilePic" src="user.user_picture" />
+          {{ user.username }}
+          </div>
+        </router-link>
+      </div>
+      <button type="submit" value="submit">Search</button>
     </form>
   </div>
 </template>
 
 <script>
-
-import UserService from '../services/UserService.js'
+import UserService from "../services/UserService.js";
 
 export default {
-    name: 'searchBar',
-data(){
-    return{
+  name: "searchBar",
+  data() {
+    return {
+      users: [],
       user: [],
-      search: '',
+      search: "",
       post: [],
-
-    }
+    };
   },
   components: {},
-  created() {
-
-  },
+  created() {},
   methods: {
-      filterUsers(){
-          UserService.getUsersByUsername().then(response => {
-              this.user = response.data;
-          })
-      }
-
-},
-  computed:{
-    filteredUsernames(){
-
+    filterUsers() {
+      console.log(this.users);
+      UserService.getUsersByUsername(this.search).then(response => {
+        this.users = response.data;
+        console.log(this.users);
+      })
+    },
+  },
+  computed: {
+    filteredUsernames() {
       return this.user.filter((username) => {
         return username.toLowerCase().includes();
-      })
-    }
-  }
+      });
+    },
+  },
 };
-
-
 </script>
     
 
 <style>
+#results{
+    display: flex;
+    flex-direction: row;
+}
+#profilePic{
+    margin-right: 5px;
+
+}
 .search-bar input,
 .search-btn,
 .search-btn:before,
@@ -72,8 +82,8 @@ data(){
 .search-bar,
 .search-bar input:focus,
 .search-bar input:valid {
-  width: 100px;
-  height: 100px;
+  width: 110px;
+  height: 50px;
 }
 .search-bar input:focus,
 .search-bar input:not(:focus) + .search-btn:focus {
@@ -88,7 +98,6 @@ data(){
 .search-bar input {
   background: transparent;
   border-radius: 1.5em;
-  box-shadow: 0 0 0 0.4em #171717 inset;
   padding: 0.75em;
   transform: translate(0.5em, 0.5em) scale(0.5);
   transform-origin: 100% 0;
