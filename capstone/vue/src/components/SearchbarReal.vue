@@ -29,7 +29,7 @@
 import UserService from "../services/UserService.js";
 
 export default {
-  name: "searchBar",
+  name: "SearchBarReal",
   data() {
     return {
       users: [],
