@@ -18,9 +18,10 @@
 import UserService from '../services/UserService.js'
 
 export default {
-    name: 'searchBar',
-data(){
-    return{
+  name: "NewSearchbar",
+  data() {
+    return {
+      users: [],
       user: [],
       search: '',
       post: [],
