@@ -12,6 +12,7 @@ import Post from '../components/Post'
 import FavoritesView from '../views/FavoritesView'
 import PublicUserProfile from '../views/PublicUserProfile.vue'
 import SearchPage from '../views/Search.vue'
+import UpdateUserPage from '../views/UpdateUserPage'
 
 
 Vue.use(Router)
@@ -120,6 +121,14 @@ const router = new Router({
       path: '/results',
       name: 'searchUsers',
       component: SearchPage,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/update',
+      name: 'updatePage',
+      component: UpdateUserPage,
       meta: {
         requiresAuth: true
       }

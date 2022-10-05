@@ -1,7 +1,7 @@
 <template>
   <div>
-      <div v-for="post in this.$store.state.favoritePosts" v-bind:key="post.postId" class = card>
-      <SinglePost v-bind:post="post"/>
+      <div v-for="post in this.$store.state.favoritePosts" v-bind:key="post.postId" class = "card">
+      <SinglePost v-bind:post="post" v-if="postExists"/>
       </div>
   </div>
 </template>
@@ -12,6 +12,12 @@ import favoriteService from '../services/FavoriteService';
 
 export default {
     name:'favorites-feed',
+    data()  {
+      return  {
+        postExists: null
+      }
+    },
+
 
     components: {
         SinglePost
@@ -22,6 +28,7 @@ export default {
             //pass userId into this method
             favoriteService.getFavoritePosts().then(response=>{
                 this.$store.commit("SET_FAVORITE_POSTS", response.data)
+                this.postExists = true;
             })
             .catch(error => {
             if (error.response && error.response.status === 404) {
