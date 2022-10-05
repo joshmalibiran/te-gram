@@ -1,8 +1,10 @@
 <template>
   <div>
+    <div id="userPosts">
       <div v-for="post in this.$store.state.favoritePosts" v-bind:key="post.postId" class = card>
       <SinglePost v-bind:post="post"/>
       </div>
+    </div>
   </div>
 </template>
 

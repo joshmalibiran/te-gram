@@ -1,7 +1,12 @@
 <template>
-    <div id="favorites">
+    <div>
+        <div class="header-favorites">
+            <h1>My Favorites</h1>
+        </div>
+        <div id="favorites">
         <favorites-feed/>
         <navigation-bar/>
+        </div>
     </div>
 </template>
 
@@ -20,7 +25,15 @@ export default {
 
 <style>
 #favorites{
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 5px;
+    
 }
+.header-favorites{
+    background-color: rgb(207, 234, 255);
+    text-align: center;
+}
+
+  
 </style>
