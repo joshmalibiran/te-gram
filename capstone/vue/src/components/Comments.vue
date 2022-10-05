@@ -2,12 +2,12 @@
   <div>
       <div id="commentListBox">
         <div v-for="comment in this.$store.state.post.commentsOnPost" v-bind:key="comment.id">
-          <p>{{comment.username}}: {{comment.description}}</p>
+          <p id="comments">{{comment.username}}: {{comment.description}}</p>
         </div>
       </div>
       
       <form v-on:submit.prevent="postComment" id = "commentForm">
-      <input type="text" placeholder="Add a comment..." v-model="createdComment.description"/>
+      <input id="commentInput" type="text" placeholder="Add a comment..." v-model="createdComment.description"/>
       <button type="submit" value ="Submit" >Post</button>
       </form>
   </div>
@@ -59,11 +59,17 @@ export default {
 </script>
 
 <style>
+#comments{
+    margin-left: 5px;
+}
 #commentListBox {
-    overflow-y:scroll;
     max-height: 500px;
 }
-
+#commentInput{
+    position: relative;
+    margin-left: 3px;
+    width: 348px;
+}
 
 
 </style>

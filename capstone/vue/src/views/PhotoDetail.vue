@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="container">
     <navigation-bar/>
-    <div id = detailCard>
+    <div id = "detailCard">
       <single-post v-bind:post="this.$store.state.post" v-if="postExists"/>
       <div id = commentBox>
       <comments v-bind:postId="this.$route.params.postId"/>
@@ -58,15 +58,21 @@ export default {
 </script>
 
 <style>
+#container{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
 #detailCard {
-  display:flex;
-  justify-content: center;  
+  justify-content: center; 
+  height: 400px; 
 }
 
 #commentBox {
   background-color:white;
-  width:300px;
-  height: 500px
+  width:auto;
+  height: 300px;
+  overflow-y: scroll;
 }
 
 </style>
