@@ -1,16 +1,17 @@
 <template>
   <div>
-      <div id = card>
+      <div id = "card">
+          <div id="picture">
           <router-link :to="{ name: 'details', params: { postId: post.postId}}">
-        <img :src="post.postPicture" id="picture" />
+        <img :src="post.postPicture"  />
         </router-link>
-        <div id = "btns">
-            <button v-on:click="toggleLike()" id="like" :class=" isLikeClicked ? 'likeBtn': '' ">Like</button>
-            <button v-on:click="toggleFavorite()" :class="isFavorited ? 'favoriteBtn': '' ">Favorite</button>
         </div>
-        <div id = "info"> 
-        <p>{{likes}} Likes</p>   
-        <p><b>{{post.username}}</b> {{post.caption}}</p>
+        <div id = "btns">
+            <button v-on:click="toggleLike()" id="like" :class=" isLikeClicked ? 'likeBtn': '' ">{{likes}}  Like  </button>
+            <button v-on:click="toggleFavorite()" id="favorite" :class="isFavorited ? 'favoriteBtn': '' ">Favorite</button>
+        </div>
+        <div id = "info">  
+        <p>{{post.username}}<b>:    </b>{{post.caption}}</p>
         </div>
       </div>
 
@@ -111,34 +112,52 @@ export default {
 <style>
 #info   {
     display: flex;
-    flex-direction: column;
-    
-}
-
-#btns   {
-    width: 600px;
-    display:flex;
     flex-direction: row;
-    height:auto;
-    justify-content:  space-between;
+    margin-left: 5px;
+    width: 400px;
+    height: auto;
+}
+#info > p{
+    width: auto;
+}
+#btns   {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    justify-content: space-between;
 }
 
 #card{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border: 5px solid black;
-    background-color: rgba(96, 193, 238, 0.867);
-    width: 600px;
+    border: 3px solid black;
+    border-radius: 10px;
+    box-shadow: 3px 6px powderblue;
+    background-color: rgba(175, 227, 252, 0.867);
+    width: 400px;
+    height: 430px;
+  padding: 10px 10px 20px 10px;
+  border: 1px solid #BFBFBF;
+  background-color: rgb(197, 241, 255);
+  box-shadow: 10px 10px 5px #aaaaaa;
 }
 
 #picture    {
+    display: flex;
+    align-content: center;
     height: auto;
-    width:auto;
-    /* max-height: 600px;
-    max-width: 600px; */
+    width: auto;
 }
-
+#like{
+    border-radius: 10px;
+    width: 70px;
+    margin-left: 5px;
+}
+#favorite{
+    border-radius: 10px;
+    width: 70px;
+}
 .likeBtn    {
     background-color:palevioletred;
 }
