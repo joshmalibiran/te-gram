@@ -2,18 +2,18 @@
   <div>
       <navigation-bar/>
 
-<searchbar/>
+<new-searchbar/>
   </div>
 </template>
 
 <script>
 import NavigationBar from '../components/NavigationBar.vue';
 
-import searchbar from '../components/Searchbar.vue'
+import NewSearchbar from '../components/NewSearchbar.vue'
 
 export default {
     name: 'search',
-  components: { searchbar,
+  components: { NewSearchbar,
   NavigationBar },
 
 };
