@@ -1,7 +1,7 @@
 <template>
-  <div>
     <div id="searchPage">
       <img id="cohortpic" src="../images/background-cohortpic.png" />
+      <h2 id="h2">Search for Users!</h2>
       <form
         id="searchBar"
         action=""
@@ -31,7 +31,6 @@
         </div>
         </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -70,12 +69,18 @@ export default {
     
 
 <style>
+#h2{
+  position: relative;
+  color: black;
+  font-size: 30px;
+}
 #cohortpic{
   position: absolute;
   align-self: center;
   height: 600px;
   width: 1000px;
   opacity: 0.3;
+  border-radius: 5px;
 }
 #searchPage {
   display: flex;
@@ -90,7 +95,7 @@ export default {
   justify-content: center;
 }
 #searchInput {
-  width: 900px;
+  width: 500px;
   height: 45px;
   display: flex;
   align-self: center;
@@ -101,20 +106,21 @@ export default {
   justify-content: center;
   align-self: center;
   position: relative;
+  width: 70px;
 }
 #results{
   display: flex;
   flex-direction: column;
   background-color: white;
-  justify-content: flex-start;
-  align-self: flex-start;
+  justify-content: center;
+  align-self: center;
   position: relative;
-  width: 300px;
-  margin-left: 500px;
+  width: 500px;
   margin-top: 50px;
 }
 #resultLinks{
   text-decoration: none;
+  color: black;
 }
 #resultsPic{
   border-radius: 50%;
