@@ -40,19 +40,10 @@ export default {
     name: "top-nav-bar",
     
 }
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navPanel").style.top = "0";
-  } else {
-    document.getElementById("navPanel").style.top = "-200px";
-  }
-  prevScrollpos = currentScrollPos;
-}
 </script>
 
 <style>
+
 #usernameLink{
   font-size: 17px;
 }

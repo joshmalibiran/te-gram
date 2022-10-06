@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
       <div v-for="post in this.$store.state.recentPosts" v-bind:key="post.postId" class = card> 
       <SinglePost v-bind:post="post" v-if="postExists"/>
       </div>
@@ -48,8 +48,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-
-</style>

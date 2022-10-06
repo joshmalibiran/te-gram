@@ -28,9 +28,7 @@ export default {
   align-items: center;
 }
 #feed-header{
-    display: flex;
-    background-color: rgb(207, 234, 255);
-    justify-content: center;
+    text-align: center;
 }
 
 </style>

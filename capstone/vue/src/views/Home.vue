@@ -1,8 +1,9 @@
 <template>
   <div id="home">
-    <div class = page>
-    <homepage/>
     <navigation-bar/>
+    <div class = "page">
+    <homepage/>
+    
     </div>
   </div>
   
