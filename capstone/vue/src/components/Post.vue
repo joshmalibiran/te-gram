@@ -11,13 +11,25 @@
         </router-link>
       </div>
       <div id="btns">
+
         <button
           v-on:click="toggleLike()"
           id="like"
           :class="isLikeClicked ? 'likeBtn' : ''"
         >
+
+          <div v-if="likes === 1">
           {{ likes }} Like
+          </div>
+
+          <div v-else>
+          {{likes}} Likes
+          </div>
+
+
         </button>
+
+
         <button
           v-on:click="toggleFavorite()"
           id="favorite"
