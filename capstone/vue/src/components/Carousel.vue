@@ -5,63 +5,63 @@
 
       <div class="portfolio_item">
         <a href="#portfolio-item-1" class="button">
-          <img src="../images/strawberries.png" alt="" />
+          <img src="../images/lightbox/sample1small.png" alt="" />
         </a>
       </div>
 
       <!-- portfolio item 02 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-2" class="button">
-          <img src="../images/architecture.png" alt="" />
+          <img src="../images/lightbox/sample2small.png" alt="" />
         </a>
       </div>
 
       <!-- portfolio item 03 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-3" class="button">
-          <img src="../images/coffee.png" alt=""
+          <img src="../images/lightbox/sample3small.png" alt=""
         /></a>
       </div>
 
       <!-- portfolio item 04 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-4" class="button">
-          <img src="https://unsplash.it/250?image=1020" alt="" />
+          <img src="../images/lightbox/sample4small.png" alt="" />
         </a>
       </div>
 
       <!-- portfolio item 05 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-5" class="button">
-          <img src="https://unsplash.it/250?image=1035" alt="" />
+          <img src="../images/lightbox/sample5small.png" alt="" />
         </a>
       </div>
 
       <!-- portfolio item 06 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-6" class="button">
-          <img src="https://unsplash.it/250?image=965" alt="" />
+          <img src="../images/lightbox/sample6small.png" alt="" />
         </a>
       </div>
 
       <!-- portfolio item 07 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-7" class="button">
-          <img src="https://unsplash.it/250?image=132" alt="" />
+          <img src="../images/lightbox/sample7small.png" alt="" />
         </a>
       </div>
 
       <!-- portfolio item 08 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-8" class="button">
-          <img src="https://unsplash.it/250?image=666" alt="" />
+          <img src="../images/lightbox/sample8small.png" alt="" />
         </a>
       </div>
 
       <!-- portfolio item 09 -->
       <div class="portfolio_item">
         <a href="#portfolio-item-9" class="button">
-          <img src="https://unsplash.it/250?image=444" alt="" />
+          <img src="../images/lightbox/sample9small.png" alt="" />
         </a>
       </div>
 
@@ -71,7 +71,7 @@
         <div id="portfolio-item-1" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="../images/lightbox/strawberry-lightbox.png" alt="" />
+            <img class="lightbox-popup" src="../images/lightbox/sample1big.png" alt="" />
             <div class="navBtns">
               <a href="#" class="lb-prev"></a>
               <a href="#portfolio-item-2" class="lb-next"></a>
@@ -84,7 +84,7 @@
         <div id="portfolio-item-2" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="../images/lightbox/architecture-lightbox.png" alt="" />
+            <img class="lightbox-popup" src="../images/lightbox/sample2big.png" alt="" />
             <div class="navBtns">
               <a href="#portfolio-item-1" class="lb-prev"></a>
               <a href="#portfolio-item-3" class="lb-next"></a>
@@ -96,7 +96,7 @@
         <div id="portfolio-item-3" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="../images/lightbox/coffee-lightbox.png" alt="" />
+            <img class="lightbox-popup" src="../images/lightbox/sample3big.png" alt="" />
             <div class="navBtns">
               <a href="#portfolio-item-2" class="lb-prev"></a>
               <a href="#portfolio-item-4" class="lb-next"></a>
@@ -109,7 +109,7 @@
         <div id="portfolio-item-4" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="../images/lightbox/bear-lightbox.png" alt="" />
+            <img class="lightbox-popup" src="../images/lightbox/sample4big.png" alt="" />
             <div class="navBtns">
               <a href="#portfolio-item-3" class="lb-prev"></a>
               <a href="#portfolio-item-5" class="lb-next"></a>
@@ -121,8 +121,8 @@
         <div id="portfolio-item-5" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img
-              src="../images/lightbox/rainbow-waterfall-lighbox.png"
+            <img class="lightbox-popup"
+              src="../images/lightbox/sample5big.png"
               alt=""
             />
             <div class="navBtns">
@@ -136,7 +136,7 @@
         <div id="portfolio-item-6" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="../images/lightbox/foggy-bridge-lightbox.png" alt="" />
+            <img class="lightbox-popup" src="../images/lightbox/sample6big.png" alt="" />
             <div class="navBtns">
               <a href="#portfolio-item-5" class="lb-prev"></a>
               <a href="#portfolio-item-7" class="lb-next"></a>
@@ -148,7 +148,7 @@
         <div id="portfolio-item-7" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="../images/lightbox/side-of-road-lightbox.png" alt="" />
+            <img class="lightbox-popup" src="../images/lightbox/sample7big.png" alt="" />
             <div class="navBtns">
               <div class="navBtns">
                 <a href="#portfolio-item-6" class="lb-prev"></a>
@@ -162,7 +162,7 @@
         <div id="portfolio-item-8" class="portfolio-lightbox">
           <div class="portfolio-lightbox_content">
             <a href="#portfolio" class="close"></a>
-            <img src="../images/lightbox/forest-lightbox.png" alt="" />
+            <img class="lightbox-popup" src="../images/lightbox/sample8big.png" alt="" />
             <div class="navBtns">
               <a href="#portfolio-item-7" class="lb-prev"></a>
               <a href="#portfolio-item-9" class="lb-next"></a>
@@ -174,7 +174,7 @@
       <div id="portfolio-item-9" class="portfolio-lightbox">
         <div class="portfolio-lightbox_content">
           <a href="#portfolio" class="close"></a>
-          <img src="../images/lightbox/library-lightbox.png" alt="" />
+          <img class="lightbox-popup" src="../images/lightbox/sample9big.png" alt="" />
           <div class="navBtns">
             <a href="#portfolio-item-8" class="lb-prev"></a>
             <a href="#portfolio" class="lb-next"></a>
@@ -214,7 +214,9 @@ img {
   width: auto;
   height: auto;
 }
-
+.lightbox-popup{
+  border-radius: 10px;
+}
 .portfolio-lightbox {
   position: fixed;
   top: 0;
