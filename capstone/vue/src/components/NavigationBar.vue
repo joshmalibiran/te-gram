@@ -15,6 +15,7 @@
         ><img id="upload" src="../images/Upload-Icon.png"/></router-link
       >
       <router-link  class="links" v-bind:to="{ name: 'favorite'}">Favorites</router-link>
+      <router-link class="links" v-bind:to= "{name: 'updatePage'}"> Edit Profile</router-link>
       <router-link
         class="links"
         v-bind:to="{ name: 'logout' }"
