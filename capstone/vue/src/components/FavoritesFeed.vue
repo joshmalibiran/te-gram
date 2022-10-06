@@ -1,8 +1,15 @@
 <template>
   <div>
+<<<<<<< HEAD
       <div v-for="post in this.$store.state.favoritePosts" v-bind:key="post.postId" class = "card">
       <SinglePost v-bind:post="post" v-if="postExists"/>
+=======
+    <div id="userPosts">
+      <div v-for="post in this.$store.state.favoritePosts" v-bind:key="post.postId" class = card>
+      <SinglePost v-bind:post="post"/>
+>>>>>>> d5fb36e215a0e8d2c9db9187e9115b1e6a6c2df3
       </div>
+    </div>
   </div>
 </template>
 
