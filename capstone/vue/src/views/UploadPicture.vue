@@ -1,24 +1,29 @@
 <template>
 <div>
+    <top-nav-bar id="Topnavbar"/>
     <UploadForm/>
-    <navigation-bar/>
+    
 </div>
 </template>
 
 <script>
-import NavigationBar from '../components/NavigationBar.vue';
+import TopNavBar from '../components/TopNavBar.vue';
 import UploadForm from '../components/UploadForm.vue';
 
 export default {
     components: {
         UploadForm,
-        NavigationBar
+        TopNavBar
     }
 
 }
 </script>
-        NavigationBar
 
 <style>
-
+#Topnavbar{
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    height: 100px;
+}
 </style>
