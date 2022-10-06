@@ -7,7 +7,7 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
-	user_picture varchar(300),
+	user_picture varchar(600),
 	email varchar(50) NOT NULL,
 	
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
@@ -16,7 +16,7 @@ CREATE TABLE users (
 CREATE TABLE posts	(
 	post_id SERIAL,
 	user_id integer NOT NULL,
-	post_picture varchar(300) NOT NULL,
+	post_picture varchar(600) NOT NULL,
 	caption varchar(1000) NOT NULL,
 	date_posted timestamp NOT NULL,
 
@@ -53,6 +53,24 @@ CREATE TABLE likes	(
 	CONSTRAINT FK_likes_users FOREIGN KEY(user_id) REFERENCES users(user_id),
 	CONSTRAINT FK_likes_posts FOREIGN KEY(post_id) REFERENCES posts(post_id)
 );
+
+INSERT INTO users(username, password_hash, role, user_picture, email) VALUES('joshmali', '$2a$10$EXPaoQBQcKQRXP27qC0zee.sXEwVt0uM67tDUayR79OUpqClm00ZC', 'ROLE_USER', 'https://artwork.espncdn.com/categories/cd70a58e-a830-330c-93ed-52360b51b632/1x1Feature/1440_201903062023.jpg', 'josh@gmail.com' );
+INSERT INTO users(username, password_hash, role, user_picture, email) VALUES('robertdowneyjr', 'hash','ROLE_USER', 'https://static.catapult.co/cdn-cgi/image/width=1170,height=658,dpr=2,fit=cover,format=auto/production/stories/31705/cover_photos/original/iron_man_site_1633028435_1637683340.jpg', 'email');
+INSERT INTO users(username, password_hash, role, user_picture, email) VALUES('catluver22', 'hash', 'ROLE_USER', 'https://www.travelandleisure.com/thmb/lZeCZo1hq_41edFv-hEop-VtQ-w=/1600x1200/smart/filters:no_upscale()/red-pink-orange-purple-sunset-WHYCOLORS1220-7684b47c858b4e1e9d73018e213c7ff3.jpg', 'email');
+INSERT INTO users(username, password_hash, role, user_picture, email) VALUES('theohiostateuniversity','hash','ROLE_USER','https://logos-world.net/wp-content/uploads/2021/09/Ohio-State-Logo-1958-1986.png','email');
+INSERT INTO users(username, password_hash, role, user_picture, email) VALUES('lizluvsdogs','hash','ROLE_USER','https://www.science.org/do/10.1126/science.aaw5856/abs/dog_16x9_3.jpg','email');
+INSERT INTO users(username, password_hash, role, user_picture, email) VALUES('rocknroll13','hash','ROLE_USER','https://www.superprof.com/blog/wp-content/uploads/2018/06/drums.jpg','email');
+
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(2,'https://m.media-amazon.com/images/M/MV5BMTQ5MjUyMzk5NV5BMl5BanBnXkFtZTcwMzUyNTIzMw@@._V1_.jpg','at work','2022-01-01');
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(3,'https://www.humanesociety.org/sites/default/files/styles/1240x698/public/2020-07/kitten-510651.jpg?h=f54c7448&itok=ZhplzyJ9', 'cute little guy', '2022-01-01');
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(4,'https://www.osu.edu/assets/downloads/images/bigpics/Oval_1_1600x1200.jpg', 'What a view!', '2022-01-01');
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(5,'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=1.00xw:0.669xh;0,0.190xh&resize=640:*', 'My pupper', '2022-01-01' );
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(5,'https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=iQEwihUn', 'Growing up so fast!', '2022-01-01' );
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(6,'https://cdn.vox-cdn.com/thumbor/Al48-pEnyIn2rlgKX7MIHNmlE68=/0x0:5563x3709/1200x800/filters:focal(2302x1311:3192x2201)/cdn.vox-cdn.com/uploads/chorus_image/image/65752607/1048232144.jpg.0.jpg', '#sunset', '2022-01-01');
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(1,'https://newyorksimply.com/wp-content/uploads/2021/11/Central-Park-fALL-3494.jpg', 'Went to the park today', '2022-01-01');
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(6,'https://upload.wikimedia.org/wikipedia/commons/e/e7/Everest_North_Face_toward_Base_Camp_Tibet_Luca_Galuzzi_2006.jpg', 'Long way up', '2022-01-01');
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(3,'https://media-be.chewy.com/wp-content/uploads/2020/10/06104830/foster-kittens-1024x548.jpg', 'my kitten!', '2022-01-01');
+INSERT INTO posts(user_id, post_picture, caption, date_posted) VALUES(1,'https://cdn.britannica.com/93/94493-050-35524FED/Toronto.jpg', 'the 6', '2022-01-01');
 
 
 COMMIT TRANSACTION;
