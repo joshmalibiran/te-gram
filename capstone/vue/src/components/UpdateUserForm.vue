@@ -4,15 +4,15 @@
       <form id = "updateUserForm" @submit.prevent="updateUser">
 
         <label for="usernameInput">Username</label>
-        <input type = "text" id = "usernameInput" v-model="user.username" required/>
+        <input class="inputBox" type = "text" id = "usernameInput" v-model="user.username" required/>
         <label for="passwordInput">Password</label>
-        <input type = "text" id = "passwordInput" v-model="user.password" required/>
+        <input class="inputBox" type = "text" id = "passwordInput" v-model="user.password" required/>
         <label for="confirmPasswordInput"> Confirm Password</label>
-        <input type = "text" id = "confirmPasswordInput" v-model="confirmPassword" required/>
+        <input class="inputBox" type = "text" id = "confirmPasswordInput" v-model="confirmPassword" required/>
         <label for="emailInput">Email</label>
-        <input type = "text" id = "emailInput" v-model="user.email" required/>
+        <input class="inputBox" type = "text" id = "emailInput" v-model="user.email" required/>
         <label for="pictureInput">Picture</label>
-        <input type = "text" id = "pictureInput" v-model="user.picture" required/>
+        <input class="inputBox" type = "text" id = "pictureInput" v-model="user.picture" required/>
         <input type = "submit" id = "Submit"/>
 
       </form>
@@ -76,5 +76,19 @@ export default {
     flex-direction: column;
     width: 100%;
 }
-
+#pictureInput{
+    margin-bottom: 5px;
+}
+.inputBox{
+    border-radius: 10px;
+    height: 25px;
+    width: 200px;
+    border: 1px solid black;
+}
+#Submit{
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 70px;
+    align-self: center;
+}
 </style>
