@@ -1,21 +1,25 @@
 <template>
   <div>
-      <navigation-bar/>
+      <top-nav-bar id="Topnavbar"/>
 <new-searchbar/>
   </div>
 </template>
 
 <script>
-import NavigationBar from '../components/NavigationBar.vue';
+import topNavBar from '../components/TopNavBar.vue'
 
 import NewSearchbar from '../components/NewSearchbar.vue'
 
 
 export default {
     name: 'search',
-  components: { NewSearchbar, NavigationBar
+  components: { NewSearchbar, topNavBar
    },
 
 };
 </script>
+
+<style>
+
+</style>
 
