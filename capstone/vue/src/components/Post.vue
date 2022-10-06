@@ -2,7 +2,7 @@
   <div>
     <div id="card">
       <div id="userInfo">
-          <img id="profilePic" src="user.user_picture" />
+          <img id="profilePic" :src="this.postAuthor.picture" />
           {{ post.username }}
           </div>
       <div id="picture">
@@ -49,6 +49,7 @@
 <script>
 import likeService from "../services/LikeService";
 import favoriteService from "../services/FavoriteService";
+import userService from '../services/UserService';
 
 export default {
   name: "single-post",
@@ -58,6 +59,7 @@ export default {
       isLikeClicked: this.post.liked,
       isFavorited: this.post.favorited,
       likes: this.post.numOfLikes,
+      postAuthor: {},
     };
   },
 
@@ -120,10 +122,17 @@ export default {
           });
       }
     },
+     getUser() {
+            userService.findByUsername(this.post.username).then(response => {
+                console.log(response.data);
+                this.postAuthor = response.data;
+            });
+        }
+
   },
 
   created() {
-    console.log(this.post);
+    this.getUser();
   },
 };
 </script>

@@ -26,4 +26,9 @@ public class UserController {
     public User getCurrentUser(Principal principal)    {
         return userDao.findByUsername(principal.getName());
     }
+
+    @GetMapping(path = "/user/{username}")
+    public User getUserByUsername(@PathVariable String username) {
+        return userDao.findByUsername(username);
+    }
 }

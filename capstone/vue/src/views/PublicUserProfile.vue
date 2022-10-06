@@ -2,7 +2,8 @@
     <div id="profile">
         <top-nav-bar id="Topnavbar"/>
         <div id="header-profile">
-            <h1>My Profile</h1>
+            <h1>{{ this.user.username }}</h1>
+            <img id="headerPic" :src="this.user.picture" />
         </div>
         <UserGallery id="UserGallery"/>
     </div>
@@ -12,6 +13,7 @@
 
 import TopNavBar from '../components/TopNavBar.vue';
 import UserGallery from '../components/UserGallery.vue';
+import userService from '../services/UserService.js'
 
 export default {
 
@@ -19,6 +21,27 @@ export default {
     components: {
         UserGallery,
         TopNavBar,
+    },
+    data() {
+        return {
+            user: {},
+
+        }
+    },
+
+    methods: {
+        getUser() {
+            console.log('HELP');
+            userService.findByUsername(this.$route.params.username).then(response => {
+                console.log(response.data);
+                console.log(this.$route.params);
+                this.user = response.data;
+            });
+        }
+        
+    },
+    created() {
+        this.getUser();
     }
 
 }
@@ -28,6 +51,16 @@ export default {
 #profile{
     display: flex;
     flex-direction: column;
+}
+
+
+#headerPic{
+  align-items: center;
+  width: auto;
+  height: 60px;
+  border-radius: 50%;
+  column-gap: 50px;
+  /* background-color: red; */
 }
 #UserGallery{
     margin: 75px;
@@ -41,6 +74,9 @@ export default {
 }
 #header-profile{
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items:center;
 }
 
 
