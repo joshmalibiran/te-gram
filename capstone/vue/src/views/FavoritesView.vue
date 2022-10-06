@@ -1,23 +1,22 @@
 <template>
     <div>
-        <div class="header-favorites">
-            <h1>My Favorites</h1>
-        </div>
+        <top-nav-bar id="Topnavbar"/>
+        <h1 id="title">My Favorites</h1>
         <div id="favorites">
         <favorites-feed/>
-        <navigation-bar/>
+        
         </div>
     </div>
 </template>
 
 <script>
 import FavoritesFeed from '../components/FavoritesFeed.vue'
-import NavigationBar from '../components/NavigationBar.vue'
+import TopNavBar from '../components/TopNavBar.vue'
 
 export default {
     components: {
         FavoritesFeed,
-        NavigationBar
+        TopNavBar
     },
     name: "FavoritesView"
 }
@@ -25,15 +24,19 @@ export default {
 
 <style>
 #favorites{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 75px;
     
 }
-.header-favorites{
-    background-color: rgb(207, 234, 255);
+#Topnavbar{
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    height: 100px;
+}
+#title{
     text-align: center;
 }
-
   
 </style>

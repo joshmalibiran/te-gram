@@ -1,8 +1,8 @@
 <template>
   <div>
-      <div id="profileHeader">
+    <!-- <div id="profileHeader">
     <h1 id="username">{{ this.username }}'s Profile</h1>
-      </div>
+      </div> -->
       <div id="userPosts">
       <div
         v-for="post in this.$store.state.currentProfilePosts"
@@ -57,7 +57,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 5px;
 }
-#profileHeader{
+/* #profileHeader{
     background-color: rgb(207, 234, 255);
-}
+} */
 </style>
