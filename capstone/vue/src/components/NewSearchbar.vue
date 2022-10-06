@@ -1,17 +1,13 @@
 <template>
   <div>
     <div id="searchPage">
+      <!-- <img src="../images/background-cohortpic.png" /> -->
       <form
         id="searchBar"
         action=""
         class="search-bar"
         v-on:submit.prevent="filterUsers"
-      ><div
-          v-for="user in users"
-          class="singleUser"
-          v-bind:key="user.id"
-          v-bind:user="user"
-        ></div>
+      >
         <input
           id="searchInput"
           type="text"
@@ -19,7 +15,12 @@
           placeholder="Search Username"
         />
         <button id="submit" value="submit" type="submit">Search</button>
-        
+        <div
+          v-for="user in users"
+          class="singleUser"
+          v-bind:key="user.id"
+          
+        >{{user.username}}</div>
       </form>
     </div>
   </div>
@@ -33,7 +34,7 @@ export default {
   data() {
     return {
       users: [],
-      user: [],
+      // user: {},
       search: "",
       post: [],
     };
@@ -44,8 +45,9 @@ export default {
     filterUsers() {
       UserService.getUsersByUsername(this.search).then((response) => {
         console.log(this.username);
-        this.user = response.data;
-        console.log(this.username);
+        this.users = response.data;
+        console.log(this.users);
+        console.log(response.data);
       });
     },
   },
