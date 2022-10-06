@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="searchPage">
-      <!-- <img src="../images/background-cohortpic.png" /> -->
+      <img id="cohortpic" src="../images/background-cohortpic.png" />
       <form
         id="searchBar"
         action=""
@@ -15,13 +15,21 @@
           placeholder="Search Username"
         />
         <button id="submit" value="submit" type="submit">Search</button>
-        <div
+      </form>
+      <div id="results">
+      <div 
           v-for="user in users"
           class="singleUser"
           v-bind:key="user.id"
           
-        >{{user.username}}</div>
-      </form>
+        ><div id="list">
+          <router-link id="resultLinks" v-bind:to="{name: 'PublicUserProfile', params: {username: user.username}}">
+          <img id="resultsPic" src="user.user_picture"/>
+          {{user.username}}
+          </router-link>
+          </div>
+        </div>
+        </div>
     </div>
   </div>
 </template>
@@ -34,7 +42,6 @@ export default {
   data() {
     return {
       users: [],
-      // user: {},
       search: "",
       post: [],
     };
@@ -63,6 +70,13 @@ export default {
     
 
 <style>
+#cohortpic{
+  position: absolute;
+  align-self: center;
+  height: 600px;
+  width: 1000px;
+  opacity: 0.3;
+}
 #searchPage {
   display: flex;
   flex-direction: column;
@@ -76,7 +90,7 @@ export default {
   justify-content: center;
 }
 #searchInput {
-  width: 1000px;
+  width: 900px;
   height: 45px;
   display: flex;
   align-self: center;
@@ -86,5 +100,23 @@ export default {
 #submit {
   justify-content: center;
   align-self: center;
+  position: relative;
+}
+#results{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  justify-content: flex-start;
+  align-self: flex-start;
+  position: relative;
+  width: 300px;
+  margin-left: 500px;
+  margin-top: 50px;
+}
+#resultLinks{
+  text-decoration: none;
+}
+#resultsPic{
+  margin-right: 5px;
 }
 </style>
