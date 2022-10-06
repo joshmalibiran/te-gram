@@ -7,7 +7,8 @@
       </router-link>
       <router-link class="links" v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
       </router-link>
-       <img id="profilePicture" src="../images/default.jpg" />
+       <!-- <img id="profilePicture" src="../images/default.jpg" /> -->
+       <img id="profilePicture" :src= "$store.state.user.picture" />
       <router-link
         class="links"
         v-bind:to="{ name: 'upload' }"
@@ -30,8 +31,14 @@
 export default {
   components: { },
     name: "nav-bar",
+    data() {
+      return {
+        // profilePic: this.$store.state.user.picture,
+      }
+    }
     
 }
+
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
   var currentScrollPos = window.pageYOffset;

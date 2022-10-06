@@ -11,6 +11,10 @@ export default{
 
     getCurrentUser()    {
         return axios.get('/user')
+    },
+
+    findByUsername(username) {
+        return axios.get(`/user/${username}`);
     }
 
 
