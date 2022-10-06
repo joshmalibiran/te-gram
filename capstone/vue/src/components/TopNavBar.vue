@@ -21,7 +21,7 @@
       </router-link>
       <router-link class="links" v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
       </router-link>
-       <img id="profilePicture" src="../images/default.jpg" />
+       <img id="profilePicture" :src="this.user.picture" />
 
        <router-link
         class="links"
@@ -35,24 +35,32 @@
 </template>
 
 <script>
+import userService from '../services/UserService'
 export default {
   components: { },
-    name: "top-nav-bar",
-    
-}
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function() {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navPanel").style.top = "0";
-  } else {
-    document.getElementById("navPanel").style.top = "-200px";
+  name: "top-nav-bar",
+  data()  {
+    return  {
+      user:{}
+    }
+  },
+  methods:  {
+    getCurrentUser()    {
+            userService.getCurrentUser().then(response =>   {
+                this.user = response.data;
+                
+            })
+        }
+  },
+  created() {
+    this.getCurrentUser()
   }
-  prevScrollpos = currentScrollPos;
+    
 }
 </script>
 
 <style>
+
 #usernameLink{
   font-size: 17px;
 }
