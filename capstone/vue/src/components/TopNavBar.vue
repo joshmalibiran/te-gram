@@ -21,7 +21,7 @@
       </router-link>
       <router-link class="links" v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
       </router-link>
-       <img id="profilePicture" src="../images/default.jpg" />
+       <img id="profilePicture" :src="this.user.picture" />
 
        <router-link
         class="links"
@@ -35,9 +35,26 @@
 </template>
 
 <script>
+import userService from '../services/UserService'
 export default {
   components: { },
-    name: "top-nav-bar",
+  name: "top-nav-bar",
+  data()  {
+    return  {
+      user:{}
+    }
+  },
+  methods:  {
+    getCurrentUser()    {
+            userService.getCurrentUser().then(response =>   {
+                this.user = response.data;
+                
+            })
+        }
+  },
+  created() {
+    this.getCurrentUser()
+  }
     
 }
 </script>
