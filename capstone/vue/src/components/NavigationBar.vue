@@ -8,7 +8,7 @@
       <router-link class="links" v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
       </router-link>
        <!-- <img id="profilePicture" src="../images/default.jpg" /> -->
-       <img id="profilePicture" :src= "$store.state.user.picture" />
+       <img id="sideNavPic" :src= "$store.state.user.picture" />
       <router-link
         class="links"
         v-bind:to="{ name: 'upload' }"
@@ -53,6 +53,13 @@ window.onscroll = function() {
 
 
 <style>
+#sideNavPic {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
 #usernameLink{
   font-size: 25px;
 }

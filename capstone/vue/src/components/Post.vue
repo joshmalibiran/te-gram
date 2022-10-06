@@ -2,9 +2,13 @@
   <div>
     <div id="card">
       <div id="userInfo">
-          <img id="profilePic" :src="this.postAuthor.picture" />
-          {{ post.username }}
+        <router-link id = "profileLink" v-bind:to="{ name: 'PublicUserProfile', params: {username:this.postAuthor.username}}">
+          <img id="postUserPic" :src="this.postAuthor.picture" />
+        {{ post.username }}
+         </router-link>
           </div>
+
+
       <div id="picture">
         <router-link :to="{ name: 'details', params: { postId: post.postId } }">
           <img :src="post.postPicture" />
@@ -149,6 +153,12 @@ export default {
 #info > p {
   width: auto;
 }
+
+#profileLink  {
+  text-decoration: none;
+  color:black;
+}
+
 #card {
   display: flex;
   flex-direction: column;
@@ -161,6 +171,7 @@ export default {
   box-shadow: 10px 10px 5px #7097b3af;
 }
 #userInfo {
+  margin-top:5px;
   margin-left: 10px;
   height: 50px;
   position: relative;
@@ -186,7 +197,16 @@ export default {
   background-color: palevioletred;
 }
 
+#postUserPic  {
+  padding-right: 5px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+
 .favoriteBtn {
   background-color: gold;
 }
+
 </style>

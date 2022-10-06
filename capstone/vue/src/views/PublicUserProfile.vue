@@ -2,8 +2,18 @@
     <div id="profile">
         <top-nav-bar id="Topnavbar"/>
         <div id="header-profile">
+
+            <div v-if="this.user.username === this.$store.state.user.username">
+            <h1>My Profile</h1>
+            </div>
+
+            <div v-else>
             <h1>{{ this.user.username }}</h1>
+            </div>
+
+            <div id = "imgContainer">
             <img id="headerPic" :src="this.user.picture" />
+            </div>
         </div>
         <UserGallery id="UserGallery"/>
     </div>
@@ -53,13 +63,12 @@ export default {
     flex-direction: column;
 }
 
-
 #headerPic{
-  align-items: center;
-  width: auto;
-  height: 60px;
   border-radius: 50%;
-  column-gap: 50px;
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+
   /* background-color: red; */
 }
 #UserGallery{

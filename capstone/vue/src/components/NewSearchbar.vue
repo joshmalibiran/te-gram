@@ -24,7 +24,7 @@
           
         ><div id="list">
           <router-link id="resultLinks" v-bind:to="{name: 'PublicUserProfile', params: {username: user.username}}">
-          <img id="resultsPic" src="user.user_picture"/>
+          <img id="resultsPic" :src="user.picture"/>
           {{user.username}}
           </router-link>
           </div>
@@ -117,6 +117,10 @@ export default {
   text-decoration: none;
 }
 #resultsPic{
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
   margin-right: 5px;
 }
 </style>

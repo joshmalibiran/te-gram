@@ -21,7 +21,7 @@
       </router-link>
       <router-link class="links" v-bind:to="{ name: 'PublicUserProfile', params: {username:this.$store.state.user.username}}">
       </router-link>
-       <img id="profilePicture" :src="this.user.picture" />
+       <img id="topNavPic" :src="this.user.picture" />
 
        <router-link class="links" v-bind:to= "{name: 'updatePage'}"> Edit Profile</router-link>
 
@@ -97,10 +97,13 @@ export default {
   margin-bottom: 10px;
   margin-top: 10px;
 }
-#rightNavBar > #profilePicture {
-  align-items: center;
-  height: 60px;
+
+
+#topNavPic  {
   border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
 }
 .links{
   font-size: 17px;
