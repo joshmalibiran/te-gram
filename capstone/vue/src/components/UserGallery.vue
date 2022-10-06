@@ -1,14 +1,14 @@
 <template>
   <div>
-      <div id="profileHeader">
+    <!-- <div id="profileHeader">
     <h1 id="username">{{ this.username }}'s Profile</h1>
-      </div>
+      </div> -->
       <div id="userPosts">
       <div
         v-for="post in this.$store.state.currentProfilePosts"
         v-bind:key="post.postId"
       >
-        <SinglePost :post="post" />
+        <SinglePost :post="post" v-if="postExists"/>
       </div>
     </div>
   </div>
@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       username: this.$route.params.username,
+      postExists: null
     };
   },
   methods: {
@@ -34,6 +35,7 @@ export default {
         .getUserPostsFromUsername(this.username)
         .then((response) => {
           this.$store.commit("SET_CURRENT_PROFILE_POSTS", response.data);
+          this.postExists = true
         })
         .catch((error) => {
           if (error.response && error.response.status === 404) {
@@ -57,7 +59,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   column-gap: 5px;
 }
-#profileHeader{
+/* #profileHeader{
     background-color: rgb(207, 234, 255);
-}
+} */
 </style>

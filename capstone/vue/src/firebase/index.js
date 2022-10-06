@@ -1,4 +1,4 @@
-<script type="module">
+
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
   // TODO: Add SDKs for Firebase products that you want to use
@@ -15,5 +15,4 @@
   };
 
   // Initialize Firebase
-  export const app = initializeApp(firebaseConfig);
-</script>
+  const app = initializeApp(firebaseConfig);

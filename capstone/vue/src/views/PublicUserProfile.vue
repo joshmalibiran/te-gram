@@ -1,12 +1,16 @@
 <template>
     <div id="profile">
-    <UserGallery id="UserGallery"/>
-    <navigation-bar/>
+        <top-nav-bar id="Topnavbar"/>
+        <div id="header-profile">
+            <h1>My Profile</h1>
+        </div>
+        <UserGallery id="UserGallery"/>
     </div>
 </template>
 
 <script>
-import NavigationBar from '../components/NavigationBar.vue';
+
+import TopNavBar from '../components/TopNavBar.vue';
 import UserGallery from '../components/UserGallery.vue';
 
 export default {
@@ -14,7 +18,7 @@ export default {
     name: "PublicUserProfile",
     components: {
         UserGallery,
-        NavigationBar,
+        TopNavBar,
     }
 
 }
@@ -22,10 +26,22 @@ export default {
 
 <style>
 #profile{
-    display:flex;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 #UserGallery{
-width: 100vw;
+    margin: 75px;
 }
+#Topnavbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:rgb(216,233,243);
+    
+}
+#header-profile{
+    text-align: center;
+}
+
+
 </style>
