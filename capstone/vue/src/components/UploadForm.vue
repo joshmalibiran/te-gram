@@ -4,9 +4,8 @@
       <form id="upload" @submit.prevent="submitForm">
         <label for="postPicture"> Post Link </label>
         <input
-          type="file"
-          accept="image/*"
-          @change="onFilePicked"
+          type="text"
+          v-model="post.postPicture"
           />
         <label for="caption"> Caption </label>
         <input
@@ -24,8 +23,9 @@
 
 <script>
 import postService from '../services/PostService'
+
 // import {storage} from '../firebase/index'
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+// import { getStorage, ref, uploadBytes } from "firebase/storage";
 
 export default {
   data() {
@@ -34,7 +34,6 @@ export default {
         postPicture: '',
         caption: '',
         imageUrl:'',
-        image: null
 
       },
       errorMessage: '',
@@ -43,11 +42,6 @@ export default {
     },
     methods: {
       submitForm() {
-        //makes sure image isnt null
-        if(!this.image) {
-          return;
-        }
-
         //something
         postService.addPost(this.post).then( response => {
           this.$router.push('/');
@@ -77,34 +71,34 @@ export default {
       });
     },
 
-    onPickFile()  {
-      this.$refs.fileInput.click();
-    },
-    onFilePicked(event)  {
-      const files = event.target.files
-      let fileName = files[0].name;
-      if(fileName.lastIndexOf('.') <= 0)  {
-        return alert('Invalid File')
-      }
-      const fileReader = new FileReader()
-      fileReader.addEventListener('load', () => {
-        this.imageUrl = fileReader.result;
-      })
-      fileReader.readAsDataURL(files[0])
-      this.image = files[0]
-    }
+    // onPickFile()  {
+    //   this.$refs.fileInput.click();
+    // },
+    // onFilePicked(event)  {
+    //   const files = event.target.files
+    //   let fileName = files[0].name;
+    //   if(fileName.lastIndexOf('.') <= 0)  {
+    //     return alert('Invalid File')
+    //   }
+    //   const fileReader = new FileReader()
+    //   fileReader.addEventListener('load', () => {
+    //     this.imageUrl = fileReader.result;
+    //   })
+    //   fileReader.readAsDataURL(files[0])
+    //   this.image = files[0]
+    // }
   },
-  created()  {
-    const storage = getStorage();
-    const mountainImagesRef = ref(storage, '@/src/images/bears.png');
-    console.print(mountainImagesRef)
+  // created()  {
+  //   const storage = getStorage();
+  //   const mountainImagesRef = ref(storage, '../images/bears.png');
+  //   console.print(mountainImagesRef)
 
-    uploadBytes(mountainImagesRef, null).then((snapshot) => {
-      console.log('Uploaded')
-      console.log(snapshot)
-    })
+  //   uploadBytes(mountainImagesRef, null).then((snapshot) => {
+  //     console.log('Uploaded')
+  //     console.log(snapshot)
+  //   })
 
-  }
+  // }
 }
 
 </script>
